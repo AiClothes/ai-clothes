@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// 基础用户模型
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  username String @unique
+  password String
+
+  // 是否是超级管理员【只允许从数据库调整，禁止api录入】
+  is_super Boolean @default(false)
+
+  roles UserRoleLinks[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("users")
+}
+
+// 权限（角色）模型，与 AdminUser 为 多对多关系
+model Role {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  users UserRoleLinks[]
+
+  permissions RolePermissionLinks[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("roles")
+}
+
+enum PermissionType {
+  MENU
+  API
+}
+
+// 权限模型
+model Permission {
+  id              Int            @id @default(autoincrement())
+  name            String         @unique
+  permission_type PermissionType
+
+  // 父级权限
+  parent_id Int?         @unique
+  parent    Permission?  @relation("ParentChild", fields: [parent_id], references: [id])
+  children  Permission[] @relation("ParentChild")
+
+  roles RolePermissionLinks[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("permissions")
+}
+
+// 显示的定义角色用户多对多关系
+model UserRoleLinks {
+  user_id Int
+  role_id Int
+  // ... 其他字段
+
+  user User @relation(fields: [user_id], references: [id])
+  role Role @relation(fields: [role_id], references: [id])
+
+  @@id([user_id, role_id])
+  @@map("user_role_links")
+}
+
+// 显示的定义角色权限多对多关系
+model RolePermissionLinks {
+  role_id       Int
+  permission_id Int
+  // ... 其他字段
+
+  role       Role       @relation(fields: [role_id], references: [id])
+  permission Permission @relation(fields: [permission_id], references: [id])
+
+  @@id([role_id, permission_id])
+  @@map("role_permission_links")
+}
