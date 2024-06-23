@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.APPLICATION_PORTS = exports.APPLICATION = exports.MICROSERVICE_PORTS = exports.MICROSERVICE_NAMES = exports.MICROSERVICE = void 0;
+var MICROSERVICE;
+(function (MICROSERVICE) {
+    MICROSERVICE["USER_SERVICE"] = "USER_SERVICE";
+    MICROSERVICE["LOG_SERVICE"] = "LOG_SERVICE";
+})(MICROSERVICE || (exports.MICROSERVICE = MICROSERVICE = {}));
+exports.MICROSERVICE_NAMES = {
+    [MICROSERVICE.USER_SERVICE]: 'User Service',
+    [MICROSERVICE.LOG_SERVICE]: 'Log Service'
+};
+exports.MICROSERVICE_PORTS = {
+    [MICROSERVICE.USER_SERVICE]: 8001,
+    [MICROSERVICE.LOG_SERVICE]: 8003
+};
+var APPLICATION;
+(function (APPLICATION) {
+    APPLICATION["USER"] = "USER";
+    APPLICATION["LOG"] = "LOG";
+})(APPLICATION || (exports.APPLICATION = APPLICATION = {}));
+exports.APPLICATION_PORTS = {
+    [APPLICATION.USER]: 8000,
+    [APPLICATION.LOG]: 8002
+};
+//# sourceMappingURL=constants.js.map
