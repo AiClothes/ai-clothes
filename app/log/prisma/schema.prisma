@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// START 日志相关库
+
+// 第三方api使用日志记录
+model UseThirdApiLog {
+  id              Int    @id @default(autoincrement())
+  // 第三方api的id
+  api_url         String @db.VarChar(255)
+  // 请求参数
+  request_params  String @db.Text
+  // 请求结果
+  response_result String @db.Text
+  // 被什么用户使用了
+  user_id         Int?   @db.Int
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("use_third_api_logs")
+}

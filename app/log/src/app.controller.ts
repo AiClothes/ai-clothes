@@ -16,15 +16,15 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @MessagePattern('sum')
+  @MessagePattern('user_to_log')
   sum(numArr: Array<number>): number {
-    console.log('sum log');
+    console.log('user_to_log');
     return numArr.reduce((total, item) => total + item, 0);
   }
 
-  @Get('user')
+  @Get('log_to_user')
   calculate(): Observable<number> {
-    console.log('sum log');
-    return this.userClient.send<number>('sum', [1, 2, 3, 4, 5, 6]);
+    console.log('log_to_user');
+    return this.userClient.send<number>('log_to_user', [1, 2, 3, 4, 5, 6]);
   }
 }

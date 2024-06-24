@@ -8,7 +8,7 @@ import { MICROSERVICE } from '@one-server/core';
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    @Inject(MICROSERVICE.LOG_SERVICE) private logClient: ClientProxy
+    @Inject(MICROSERVICE.USER_SERVICE) private userClient: ClientProxy
   ) {}
 
   @Get()
@@ -16,15 +16,15 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @MessagePattern('log_to_user')
+  @MessagePattern('sum')
   sum(numArr: Array<number>): number {
-    console.log('log_to_user');
+    console.log('sum log');
     return numArr.reduce((total, item) => total + item, 0);
   }
 
-  @Get('user_to_log')
+  @Get('user')
   calculate(): Observable<number> {
-    console.log('user_to_log');
-    return this.logClient.send<number>('user_to_log', [1, 2, 3, 4, 5]);
+    console.log('sum log');
+    return this.userClient.send<number>('sum', [1, 2, 3, 4, 5, 6]);
   }
 }

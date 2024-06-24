@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// START 订单相关表
+
+// 物流表
+model Logistics {
+  id Int @id @default(autoincrement())
+
+  // 物流名称
+  name String
+
+  // 订单
+  orders Order[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("logistics")
+}
+
+// 支付方式表
+model Payment {
+  id Int @id @default(autoincrement())
+
+  // 支付方式名称
+  name String
+
+  // 订单
+  orders Order[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("payments")
+}
+
+// 订单表
+model Order {
+  id Int @id @default(autoincrement())
+
+  // 订单号 只要点了创建订单，就视为创建订单成功
+  order_no        String
+  // 用户ID
+  user_id         Int
+  // 订单状态 0: 待支付 1: 已支付 2: 已发货 3: 已签收 4: 已取消
+  status          Int
+  // 订单地址
+  address         String
+  // 订单收货人
+  consignee       String
+  // 订单收货人电话
+  consignee_phone String
+  // 订单备注
+  remark          String
+  // 订单支付时间
+  payment_time    DateTime?
+  // 订单发货时间
+  delivery_time   DateTime?
+  // 订单签收时间
+  sign_time       DateTime?
+  // 订单取消时间
+  cancel_time     DateTime?
+  // 订单完成时间
+  complete_time   DateTime?
+
+  // 支付方式
+  payment_id Int
+  Payment    Payment @relation(fields: [payment_id], references: [id])
+
+  // 物流方式
+  logistics_id Int
+  Logistics    Logistics @relation(fields: [logistics_id], references: [id])
+
+  // 订单商品
+  order_products OrderProduct[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("orders")
+}
+
+// 订单商品表
+model OrderProduct {
+  id Int @id @default(autoincrement())
+
+  // 订单ID
+  order_id Int
+  Order    Order @relation(fields: [order_id], references: [id])
+
+  // 商品ID 微服务化，所以这里存储商品ID
+  product_id               Int
+  // 商品名称 为了防止商品信息变动，所以这里存储商品名称
+  product_name             String
+  // 规格值组合key [规格值id组合] 用,隔开
+  specification_value_id   String
+  // 商品规格值组合名称 用,隔开
+  specification_value_name String
+  // 商品价格(单价)原始
+  product_price            Float
+  // 商品总价 原始
+  product_total_price      Float
+
+  // 商品数量
+  product_num       Int
+  // 商品最终总价格 可能会有折扣/改价等操作
+  final_total_price Float
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("order_products")
+}

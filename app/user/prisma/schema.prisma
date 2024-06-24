@@ -13,6 +13,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// START 后台用户相关
+
 // 基础用户模型
 model User {
   id       Int    @id @default(autoincrement())
@@ -60,7 +62,7 @@ model Permission {
   permission_type PermissionType
 
   // 父级权限
-  parent_id Int?         @unique
+  parent_id Int?
   parent    Permission?  @relation("ParentChild", fields: [parent_id], references: [id])
   children  Permission[] @relation("ParentChild")
 
@@ -97,4 +99,92 @@ model RolePermissionLinks {
 
   @@id([role_id, permission_id])
   @@map("role_permission_links")
+}
+
+// 前端用户相关
+// 1. 用户信息表 绑定微信注册信息，其他需要就加字段
+// 2. 用户作品表绑定用户作品信息 基本就是图片
+
+// 前台用用户信息表
+model FrontUser {
+  // 用户id
+  id       Int     @id @default(autoincrement())
+  // 微信openid
+  openid   String  @unique
+  // 昵称 [需要程序限制，不超过24个字符]
+  nickname String
+  // 头像
+  avatar   String  @db.VarChar(255)
+  // 地址
+  address  String? @db.VarChar(255)
+  // 电话 [只接受中国大陆用户的微信认证]
+  phone    String? @db.VarChar(11)
+
+  // 用户状态[0:拉黑 1:正常]
+  status Int @default(1)
+
+  // 用户作品
+  works UserWork[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@index([openid])
+  @@map("front_users")
+}
+
+enum WorkType {
+  BUILD
+  UPLOAD
+}
+
+enum WorkCreateType {
+  NONE
+  CREATE_BY_IMAGE
+  CREATE_BY_TEXT
+}
+
+// 用户作品表
+model UserWork {
+  // 作品id
+  id          Int    @id @default(autoincrement())
+  // 作品名称
+  name        String
+  // 作品描述
+  description String
+  // 作品封面
+  cover       String
+  // 作品内容[作品地址]
+  content     String @db.VarChar(255)
+  // 作品状态
+  status      Int
+
+  // 作品信息 [记录一些图片的本身信息]
+  info String @db.Text
+
+  // 是否公开作品
+  is_public  Boolean  @default(false) @db.TinyInt
+  // 是否收藏
+  is_collect Boolean  @default(false) @db.TinyInt
+  // 作品来源
+  source     WorkType
+
+  // 创作方式
+  create_type      WorkCreateType
+  // 创建方式=CREATE_BY_IMAGE时 可能得作品id
+  create_parent_id Int?
+  parent           UserWork?      @relation("ParentChild", fields: [create_parent_id], references: [id])
+  children         UserWork[]     @relation("ParentChild")
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  // 用户id
+  user_id Int
+  // 用户信息
+  user    FrontUser @relation(fields: [user_id], references: [id])
+
+  @@map("user_works")
 }

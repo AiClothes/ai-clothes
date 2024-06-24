@@ -1,0 +1,194 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// START 商品相关表
+// 简单说明: 商品表, 商品分类表, 商品图片表, 商品规格表, 商品规格值表, 商品规格组合表, 规格组合详情表
+// 商品表作为分类 用于区分商品的类型，用作筛选
+// 商品表作为商品 用于展示商品的信息，用作购买 商品图片表作为商品的图片信息的存储，由于一个商品会有多个图片，所以商品图片表是一对多的关系
+// 商品规格表作为商品的规格信息的存储，由于一个商品会有多个规格，所以商品规格表是一对多的关系
+// 商品规格值表作为商品规格的值信息的存储，由于一个商品规格会有多个值，所以商品规格值表是一对多的关系
+// 商品规格组合表作为商品规格值的组合信息的存储，由于一个商品规格值会有多个组合，所以商品规格组合表是一对多的关系 额外注意specification_value_ids字段，用于存储规格值的组合信息
+// 规格组合详情表作为商品规格值的组合详情信息的存储，由于一个商品规格值会有多个组合详情，所以规格组合详情表是一对多的关系
+
+// 商品分类需要预制：虚拟商品（虚拟商品默认为线上交易）
+
+// 商品分类表
+model ProductCategory {
+  id Int @id @default(autoincrement())
+
+  // 分类名称
+  name String
+
+  // 商品id
+  product_id Int
+  // 商品信息
+  product    Product[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("product_categories")
+}
+
+// 商品表
+model Product {
+  id Int @id @default(autoincrement())
+
+  // 商品名称
+  name        String
+  // 商品数量
+  quantity    Int
+  // 商品价格
+  price       Float
+  // 商品描述
+  description String
+  // 商品单位
+  unit        String
+  // 商品状态[0:下架, 1:上架]
+  status      Int
+
+  // 商品图片[主页用图片 + 详情页图片]
+  image        String
+  ProductImage ProductImage[]
+
+  // 商品分类
+  category_id     Int
+  ProductCategory ProductCategory @relation(fields: [category_id], references: [id])
+
+  // 商品规格
+  ProductSpecification ProductSpecification[]
+
+  // 商品规格组合
+  ProductSpecificationCombination ProductSpecificationCombination[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("products")
+}
+
+// 商品图片表
+model ProductImage {
+  id Int @id @default(autoincrement())
+
+  // 商品图片
+  url     String
+  // 是否为主页图片
+  is_main Boolean @default(false)
+
+  // 商品id
+  product_id Int
+  // 商品信息
+  product    Product @relation(fields: [product_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("product_images")
+}
+
+// 商品规格表
+model ProductSpecification {
+  id Int @id @default(autoincrement())
+
+  // 规格名称
+  name String
+
+  ProductSpecificationValue ProductSpecificationValue[]
+
+  // 商品id
+  product_id Int
+  // 商品信息
+  product    Product @relation(fields: [product_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("product_specifications")
+}
+
+// 商品规格值表
+model ProductSpecificationValue {
+  id Int @id @default(autoincrement())
+
+  // 规格值
+  value String
+  // 规格值图片
+  image String?
+  // 规格值价格 [规格值价格为空时, 以商品价格为准]
+  price Float?
+
+  // 商品规格id
+  specification_id Int
+  // 商品规格信息
+  specification    ProductSpecification @relation(fields: [specification_id], references: [id])
+
+  ProductSpecificationCombinationDetail ProductSpecificationCombinationDetail[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("product_specification_values")
+}
+
+// 商品 规格 组合表
+model ProductSpecificationCombination {
+  id Int @id @default(autoincrement())
+
+  // 商品数量
+  quantity Int
+
+  // 规格值组合key [规格值id组合] 用,隔开
+  specification_value_id String
+
+  // 商品id
+  product_id Int
+  // 商品信息
+  product    Product @relation(fields: [product_id], references: [id])
+
+  ProductSpecificationCombinationDetail ProductSpecificationCombinationDetail[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("product_specification_combinations")
+}
+
+// 规格组合详情表
+model ProductSpecificationCombinationDetail {
+  id Int @id @default(autoincrement())
+
+  // 规格组合id
+  combination_id Int
+  // 规格组合信息
+  combination    ProductSpecificationCombination @relation(fields: [combination_id], references: [id])
+
+  // 商品规格值id
+  specification_value_id Int
+  // 商品规格值信息
+  specification_value    ProductSpecificationValue @relation(fields: [specification_value_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("product_specification_combination_details")
+}

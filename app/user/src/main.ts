@@ -2,13 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import {
+  AllExceptionsFilter,
   APPLICATION_PORTS,
-  MICROSERVICE_PORTS,
-  AllExceptionsFilter
+  MICROSERVICE_PORTS
 } from '@one-server/core';
-import { ValidationPipe, VersioningType } from '@nestjs/common';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { HttpException } from '@nestjs/common/exceptions/http.exception';
+import { HttpException, ValidationPipe, VersioningType } from '@nestjs/common';
+// import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   // 程序测试记录 1 启动单一微服务
@@ -30,6 +29,7 @@ async function bootstrap() {
 
   // 启动混合模式服务
   const app = await NestFactory.create(AppModule, {
+    // 开启GUI检查程序
     snapshot: true
   });
   // 全局基础路由前缀
@@ -49,6 +49,7 @@ async function bootstrap() {
       port: MICROSERVICE_PORTS.USER_SERVICE
     }
   });
+
   // 启动所有微服务
   await app.startAllMicroservices();
 
@@ -82,14 +83,14 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter());
 
   // 设置 Swagger 文档
-  const config = new DocumentBuilder()
-    .setTitle('用户模块 API 文档')
-    .setDescription('仅针对用户模块发起的API文档swagger说明')
-    .setVersion('1.0')
-    .addTag('users')
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/api-user/doc', app, document);
+  // const config = new DocumentBuilder()
+  //   .setTitle('用户模块 API 文档')
+  //   .setDescription('仅针对用户模块发起的API文档swagger说明')
+  //   .setVersion('1.0')
+  //   .addTag('users')
+  //   .build();
+  // const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup('/api-user/doc', app, document);
 
   await app.listen(APPLICATION_PORTS.USER);
 }

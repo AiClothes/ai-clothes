@@ -11,7 +11,7 @@ import { HttpException, ValidationPipe, VersioningType } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // 全局基础路由前缀
-  app.setGlobalPrefix('api-log');
+  app.setGlobalPrefix('api-common');
   app.enableVersioning({
     // 启用 URI 版本控制
     type: VersioningType.URI,
@@ -24,7 +24,7 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       host: '127.0.0.1',
-      port: MICROSERVICE_PORTS.LOG_SERVICE
+      port: MICROSERVICE_PORTS.ORDER_SERVICE
     }
   });
 
@@ -59,7 +59,7 @@ async function bootstrap() {
   // 注册全局异常过滤器
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  await app.listen(APPLICATION_PORTS.LOG);
+  await app.listen(APPLICATION_PORTS.ORDER);
 }
 
 bootstrap();
