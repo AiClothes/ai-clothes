@@ -1,4 +1,9 @@
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod
+} from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import {
@@ -11,6 +16,14 @@ import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { PermissionModule } from './permission/permission.module';
 import { DevtoolsModule } from '@nestjs/devtools-integration';
+import { MicroservicesModule } from './microservice/microservice.module';
+import { LogModule } from './log/log.module';
+import { ContextModule } from './context/context.module';
+import { ContextMiddleware } from './common/middleware/ContextMiddleWare';
+import { UserModule } from './user/user.module';
+import { RoleModule } from './role/role.module';
+import { AuthModule } from './auth/auth.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -30,9 +43,18 @@ import { DevtoolsModule } from '@nestjs/devtools-integration';
     //   http: process.env.NODE_ENV !== 'production',
     //   port: 3000
     // }),
-    // 全局注入，后续其他模块就不用再导入了
+    // 注册微服务
+    MicroservicesModule,
+    // 注册全局基础使用模块
     PrismaModule,
-    PermissionModule
+    LogModule,
+    ContextModule,
+    // 注册程序模块
+    AuthModule,
+    PermissionModule,
+    UserModule,
+    RoleModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [
@@ -45,4 +67,10 @@ import { DevtoolsModule } from '@nestjs/devtools-integration';
     }
   ]
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(ContextMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}

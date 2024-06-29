@@ -21,13 +21,14 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "db:migrate": "prisma migrate dev"
+    "db:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "5.12.1"
+    "@prisma/client": "*"
   },
   "devDependencies": {
-    "prisma": "^5.12.1"
+    "prisma": "*"
   },
   "jest": {
     "moduleFileExtensions": [

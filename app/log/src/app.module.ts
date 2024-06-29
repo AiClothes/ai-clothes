@@ -8,6 +8,8 @@ import {
   TransformInterceptor
 } from '@one-server/core';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { PrismaModule } from './prisma/prisma.module';
+import { SystemOperateLogModule } from './system_operate_log/system_operate_log.module';
 
 @Module({
   imports: [
@@ -21,7 +23,11 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
           port: MICROSERVICE_PORTS.USER_SERVICE
         }
       }
-    ])
+    ]),
+    // 注册全局基础使用模块
+    PrismaModule,
+    // 注册程序模块
+    SystemOperateLogModule
   ],
   controllers: [AppController],
   providers: [

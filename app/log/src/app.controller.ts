@@ -17,8 +17,14 @@ export class AppController {
   }
 
   @MessagePattern('user_to_log')
-  sum(numArr: Array<number>): number {
+  sum_user(numArr: Array<number>): number {
     console.log('user_to_log');
+    return numArr.reduce((total, item) => total + item, 0);
+  }
+
+  @MessagePattern('product_to_log')
+  sum_product(numArr: Array<number>): number {
+    console.log('product_to_log');
     return numArr.reduce((total, item) => total + item, 0);
   }
 

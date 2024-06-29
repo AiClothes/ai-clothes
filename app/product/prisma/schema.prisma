@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -31,10 +32,13 @@ model ProductCategory {
   // 分类名称
   name String
 
-  // 商品id
-  product_id Int
+  // 多级分类
+  parent_id Int?
+  parent    ProductCategory?  @relation("ParentChild", fields: [parent_id], references: [id])
+  children  ProductCategory[] @relation("ParentChild")
+
   // 商品信息
-  product    Product[]
+  product Product[]
 
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt

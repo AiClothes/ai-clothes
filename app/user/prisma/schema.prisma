@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -19,7 +20,9 @@ datasource db {
 model User {
   id       Int    @id @default(autoincrement())
   email    String @unique
+  nickname String
   username String @unique
+  phone    String @unique
   password String
 
   // 是否是超级管理员【只允许从数据库调整，禁止api录入】

@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -17,7 +18,7 @@ datasource db {
 
 // 小程序配置表
 model MiniProgramConfig {
-  id              Int    @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   // TODO 待定字段
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt

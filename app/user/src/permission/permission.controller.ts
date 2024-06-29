@@ -5,27 +5,45 @@ import {
   HttpException,
   HttpStatus,
   Post,
-  Query,
-  ValidationPipe
+  Query
 } from '@nestjs/common';
-import { BaseController } from '@one-server/core';
 import { PermissionService } from './permission.service';
-import { CreatePermissionDto, UpdatePermissionDto } from './dto/PermissionDto';
+import { CreatePermissionDto } from './dto/create-permission.dto';
+import { UpdatePermissionDto } from './dto/update-permission.dto';
+import { QueryPermissionDto } from './dto/query-permission.dto';
 
 @Controller('permission')
-export class PermissionController extends BaseController<
-  CreatePermissionDto,
-  UpdatePermissionDto
-> {
-  constructor(private permission: PermissionService) {
-    super(permission);
-  }
+export class PermissionController {
+  constructor(private readonly permission: PermissionService) {}
 
   @Post('create')
   async create(@Body() data: CreatePermissionDto) {
     try {
-      const r = await this.permission.create(data);
-      return r;
+      return await this.permission.create(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('find-all')
+  async findAll(@Body() query: QueryPermissionDto) {
+    try {
+      return await this.permission.findAll(query);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('find-one')
+  async findOne(@Body('id') id: number) {
+    try {
+      return await this.permission.findOne(id);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },
@@ -37,8 +55,7 @@ export class PermissionController extends BaseController<
   @Post('update')
   async update(@Body() data: UpdatePermissionDto) {
     try {
-      const r = await this.permission.update(data);
-      return r;
+      return await this.permission.update(data);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },
@@ -47,5 +64,15 @@ export class PermissionController extends BaseController<
     }
   }
 
-  // todo 其他权限相关操作
+  @Post('remove')
+  async remove(@Body('id') id: number) {
+    try {
+      return await this.permission.remove(id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
 }
