@@ -26,17 +26,6 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    // 注册微服务
-    ClientsModule.register([
-      {
-        name: MICROSERVICE.LOG_SERVICE,
-        transport: Transport.TCP,
-        options: {
-          host: '127.0.0.1',
-          port: MICROSERVICE_PORTS.LOG_SERVICE
-        }
-      }
-    ]),
     // 注册 DevtoolsModule 没啥卵用
     // DevtoolsModule.register({
     //   http: process.env.NODE_ENV !== 'production',
