@@ -25,6 +25,7 @@
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
+    "@nestjs/mapped-types": "*",
     "@prisma/client": "*"
   },
   "devDependencies": {

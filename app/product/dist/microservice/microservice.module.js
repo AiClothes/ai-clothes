@@ -33,6 +33,14 @@ exports.MicroservicesModule = MicroservicesModule = __decorate([
                         host: '127.0.0.1',
                         port: core_1.MICROSERVICE_PORTS.LOG_SERVICE
                     }
+                },
+                {
+                    name: core_1.MICROSERVICE.ORDER_SERVICE,
+                    transport: microservices_1.Transport.TCP,
+                    options: {
+                        host: '127.0.0.1',
+                        port: core_1.MICROSERVICE_PORTS.ORDER_SERVICE
+                    }
                 }
             ])
         ],

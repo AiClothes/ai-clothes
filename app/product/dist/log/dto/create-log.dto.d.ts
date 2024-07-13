@@ -6,4 +6,5 @@ export declare class CreateLogDto {
     operate_object_id: number;
     operate_content: string;
     operate_result: string;
+    request?: any;
 }

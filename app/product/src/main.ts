@@ -7,9 +7,16 @@ import {
   MICROSERVICE_PORTS
 } from '@one-server/core';
 import { HttpException, ValidationPipe, VersioningType } from '@nestjs/common';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // 安全防护
+  app.use(helmet());
+  // 跨域
+  app.enableCors();
+
   // 全局基础路由前缀
   app.setGlobalPrefix('api-product');
   app.enableVersioning({

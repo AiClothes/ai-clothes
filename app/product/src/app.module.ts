@@ -15,6 +15,7 @@ import { ContextModule } from './context/context.module';
 import { ProductCategoryModule } from './product_category/product_category.module';
 import { MicroservicesModule } from './microservice/microservice.module';
 import { JwtModule } from '@nestjs/jwt';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -35,7 +36,8 @@ import { JwtModule } from '@nestjs/jwt';
       }
     }),
     // 注册程序模块
-    ProductCategoryModule
+    ProductCategoryModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [

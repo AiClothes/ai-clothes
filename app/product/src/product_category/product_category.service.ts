@@ -33,8 +33,9 @@ export class ProductCategoryService {
   // findAll全部用来使用分页查询方案
   findAll(query: QueryProductCategoryDto) {
     const { current = 1, page_size = 20, name, parent_id } = query;
-    const skip = (current - 1) * page_size;
-    const take = page_size;
+    // 初期分类不需要设置分页
+    // const skip = (current - 1) * page_size;
+    // const take = page_size;
     return this.prisma.productCategory.findMany({
       where: {
         deleted_at: null,
@@ -43,19 +44,40 @@ export class ProductCategoryService {
         },
         ...(parent_id ? { parent_id: parent_id } : {})
       },
+      include: {
+        parent: true,
+        children: true
+      },
       orderBy: {
         created_at: 'desc'
-      },
-      skip: skip,
-      take: take
+      }
+      // skip: skip,
+      // take: take
     });
   }
 
   // 数量查询
-  count() {
+  count(query: QueryProductCategoryDto) {
+    const { name, parent_id } = query;
     return this.prisma.productCategory.count({
       where: {
-        deleted_at: null
+        deleted_at: null,
+        name: {
+          contains: name
+        },
+        ...(parent_id ? { parent_id: parent_id } : {})
+      }
+    });
+  }
+
+  findTree(query: object) {
+    return this.prisma.productCategory.findMany({
+      where: {
+        deleted_at: null,
+        parent_id: null
+      },
+      include: {
+        children: true
       }
     });
   }
@@ -79,7 +101,7 @@ export class ProductCategoryService {
     });
     this.log.system_operate({
       success: true,
-      operate_type: OperateType.CREATE,
+      operate_type: OperateType.UPDATE,
       operate_object_type: OperateObjectType.PRODUCT_CATEGORY,
       operate_object_id: r.id,
       operate_content: JSON.stringify(old),

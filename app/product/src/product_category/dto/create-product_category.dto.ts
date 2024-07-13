@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 // // 商品分类表
 // model ProductCategory {
@@ -24,7 +24,10 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateProductCategoryDto {
   @IsNotEmpty({ message: 'name is required' })
+  @IsString()
   name: string;
 
+  @IsOptional()
+  @IsNumber()
   parent_id?: number;
 }

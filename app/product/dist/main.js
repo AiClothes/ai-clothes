@@ -5,8 +5,11 @@ const app_module_1 = require("./app.module");
 const microservices_1 = require("@nestjs/microservices");
 const core_2 = require("@one-server/core");
 const common_1 = require("@nestjs/common");
+const helmet_1 = require("helmet");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.use((0, helmet_1.default)());
+    app.enableCors();
     app.setGlobalPrefix('api-product');
     app.enableVersioning({
         type: common_1.VersioningType.URI,

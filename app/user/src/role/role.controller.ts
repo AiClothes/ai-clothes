@@ -10,7 +10,7 @@ import {
 import { RoleService } from './role.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { QueryPermissionDto } from '../permission/dto/query-permission.dto';
+import { QueryRoleDto } from './dto/query-role.dto';
 
 @Controller('role')
 export class RoleController {
@@ -29,9 +29,14 @@ export class RoleController {
   }
 
   @Post('find-all')
-  async findAll(@Body() query: QueryPermissionDto) {
+  async findAll(@Body() query: QueryRoleDto) {
     try {
-      return await this.roleService.findAll(query);
+      const count = await this.roleService.count(query);
+      const list = await this.roleService.findAll(query);
+      return {
+        count: count,
+        list: list
+      };
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },
@@ -68,6 +73,34 @@ export class RoleController {
   async remove(@Body('id') id: number) {
     try {
       return await this.roleService.remove(id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('bind-permission')
+  async bindPermission(
+    @Body() data: { role_id: number; permission_id: number }
+  ) {
+    try {
+      return await this.roleService.bindPermission(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('unbind-permission')
+  async unBindPermission(
+    @Body() data: { role_id: number; permission_id: number }
+  ) {
+    try {
+      return await this.roleService.unBindPermission(data);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

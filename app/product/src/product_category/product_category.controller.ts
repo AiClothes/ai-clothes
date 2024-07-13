@@ -31,7 +31,21 @@ export class ProductCategoryController {
   @Post('find-all')
   async findAll(@Body() query: QueryProductCategoryDto) {
     try {
-      return await this.productCategoryService.findAll(query);
+      const count = await this.productCategoryService.count(query);
+      const list = await this.productCategoryService.findAll(query);
+      return { count, list };
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('find-tree')
+  async findTree(@Body() query: object) {
+    try {
+      return await this.productCategoryService.findTree(query);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

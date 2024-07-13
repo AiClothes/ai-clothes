@@ -18,6 +18,7 @@ class UpdateProductCategoryDto extends (0, mapped_types_1.PartialType)(create_pr
 exports.UpdateProductCategoryDto = UpdateProductCategoryDto;
 __decorate([
     (0, class_validator_1.IsNotEmpty)({ message: 'id is required' }),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], UpdateProductCategoryDto.prototype, "id", void 0);
 //# sourceMappingURL=update-product_category.dto.js.map

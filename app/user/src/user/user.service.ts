@@ -77,15 +77,28 @@ export class UserService {
   }
 
   async findAll(query: QueryUserDto) {
-    const { current = 1, page_size = 20 } = query;
+    const { current = 1, page_size = 20, email, phone } = query;
     const skip = (current - 1) * page_size;
     const take = page_size;
     return this.prisma.user.findMany({
       where: {
-        deleted_at: null
+        deleted_at: null,
+        email: {
+          contains: email
+        },
+        phone: {
+          contains: phone
+        }
       },
       orderBy: {
         created_at: 'desc'
+      },
+      include: {
+        roles: {
+          include: {
+            role: true
+          }
+        }
       },
       skip: skip,
       take: take
@@ -93,10 +106,17 @@ export class UserService {
   }
 
   // 数量查询
-  async count() {
+  async count(query: QueryUserDto) {
+    const { email, phone } = query;
     return this.prisma.user.count({
       where: {
-        deleted_at: null
+        deleted_at: null,
+        email: {
+          contains: email
+        },
+        phone: {
+          contains: phone
+        }
       }
     });
   }
@@ -191,5 +211,91 @@ export class UserService {
       return r;
     }
     throw new Error(ErrorInfo.DELETE);
+  }
+
+  async bindRole(data: { role_id: number; user_id: number }) {
+    const { role_id, user_id } = data;
+    const old = await this.findOne(user_id);
+    if (!old) {
+      throw new Error('用户不存在');
+    }
+    const role = await this.prisma.role.findUnique({
+      where: {
+        id: role_id
+      }
+    });
+    if (!role) {
+      throw new Error('角色不存在');
+    }
+    const check = await this.prisma.userRoleLinks.findFirst({
+      where: {
+        role_id,
+        user_id
+      }
+    });
+    if (check) {
+      throw new Error('用户已绑定该角色');
+    }
+    const r = await this.prisma.userRoleLinks.create({
+      data: {
+        role_id,
+        user_id
+      }
+    });
+    if (r) {
+      this.log.system_operate({
+        success: true,
+        operate_type: OperateType.CREATE,
+        operate_object_type: OperateObjectType.USER,
+        operate_object_id: user_id,
+        operate_content: JSON.stringify(old),
+        operate_result: JSON.stringify(r)
+      });
+      return r;
+    }
+    throw new Error(ErrorInfo.CREATE);
+  }
+
+  async unbindRole(data: { role_id: number; user_id: number }) {
+    const { role_id, user_id } = data;
+    const old = await this.findOne(user_id);
+    if (!old) {
+      throw new Error('用户不存在');
+    }
+    const role = await this.prisma.role.findUnique({
+      where: {
+        id: role_id
+      }
+    });
+    if (!role) {
+      throw new Error('角色不存在');
+    }
+    const check = await this.prisma.userRoleLinks.findFirst({
+      where: {
+        role_id,
+        user_id
+      }
+    });
+    if (!check) {
+      throw new Error('用户未绑定该角色');
+    }
+    const r = await this.prisma.userRoleLinks.deleteMany({
+      where: {
+        user_id: user_id,
+        role_id: role_id
+      }
+    });
+    if (r) {
+      this.log.system_operate({
+        success: true,
+        operate_type: OperateType.DELETE,
+        operate_object_type: OperateObjectType.USER,
+        operate_object_id: user_id,
+        operate_content: JSON.stringify(old),
+        operate_result: JSON.stringify(r)
+      });
+      return r;
+    }
+    throw new Error(ErrorInfo.UPDATE);
   }
 }

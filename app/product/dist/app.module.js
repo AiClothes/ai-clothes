@@ -19,6 +19,7 @@ const context_module_1 = require("./context/context.module");
 const product_category_module_1 = require("./product_category/product_category.module");
 const microservice_module_1 = require("./microservice/microservice.module");
 const jwt_1 = require("@nestjs/jwt");
+const product_module_1 = require("./product/product.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -41,7 +42,8 @@ exports.AppModule = AppModule = __decorate([
                     expiresIn: '24h'
                 }
             }),
-            product_category_module_1.ProductCategoryModule
+            product_category_module_1.ProductCategoryModule,
+            product_module_1.ProductModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [

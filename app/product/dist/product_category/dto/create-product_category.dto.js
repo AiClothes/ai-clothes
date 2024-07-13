@@ -16,6 +16,12 @@ class CreateProductCategoryDto {
 exports.CreateProductCategoryDto = CreateProductCategoryDto;
 __decorate([
     (0, class_validator_1.IsNotEmpty)({ message: 'name is required' }),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateProductCategoryDto.prototype, "name", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
+], CreateProductCategoryDto.prototype, "parent_id", void 0);
 //# sourceMappingURL=create-product_category.dto.js.map

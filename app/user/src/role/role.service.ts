@@ -41,13 +41,23 @@ export class RoleService {
   }
 
   findAll(query: QueryRoleDto) {
-    const {} = query;
+    const { name } = query;
     return this.prisma.role.findMany({
       where: {
-        deleted_at: null
+        deleted_at: null,
+        name: {
+          contains: name
+        }
       },
       orderBy: {
         created_at: 'desc'
+      },
+      include: {
+        permissions: {
+          include: {
+            permission: true
+          }
+        }
       }
       // skip: skip,
       // take: take
@@ -55,10 +65,14 @@ export class RoleService {
   }
 
   // 数量查询
-  count() {
+  count(query: QueryRoleDto) {
+    const { name } = query;
     return this.prisma.role.count({
       where: {
-        deleted_at: null
+        deleted_at: null,
+        name: {
+          contains: name
+        }
       }
     });
   }
@@ -124,6 +138,88 @@ export class RoleService {
         operate_object_type: OperateObjectType.ROLE,
         operate_object_id: r.id,
         operate_content: JSON.stringify(old),
+        operate_result: JSON.stringify(r)
+      });
+      return r;
+    }
+    throw new Error(ErrorInfo.DELETE);
+  }
+
+  async bindPermission(data: { role_id: number; permission_id: number }) {
+    const { role_id, permission_id } = data;
+    const role = await this.prisma.role.findUnique({
+      where: {
+        id: role_id
+      }
+    });
+    if (!role) {
+      throw new Error('未知角色！');
+    }
+    const permission = await this.prisma.permission.findUnique({
+      where: {
+        id: permission_id
+      }
+    });
+    if (!permission) {
+      throw new Error('未知权限！');
+    }
+    const link = await this.prisma.rolePermissionLinks.findFirst({
+      where: {
+        role_id: role_id,
+        permission_id: permission_id
+      }
+    });
+    if (link) {
+      throw new Error('权限已经绑定！');
+    }
+    console.log('role', role);
+    console.log('permission', permission);
+    const r = await this.prisma.rolePermissionLinks.create({
+      data: {
+        role_id: role_id,
+        permission_id: permission_id
+      }
+    });
+    if (r) {
+      this.log.system_operate({
+        success: true,
+        operate_type: OperateType.CREATE,
+        operate_object_type: OperateObjectType.ROLE,
+        operate_object_id: r.role_id,
+        operate_content: JSON.stringify(data),
+        operate_result: JSON.stringify(r)
+      });
+      return r;
+    }
+    throw new Error(ErrorInfo.CREATE);
+  }
+
+  async unBindPermission(data: { role_id: number; permission_id: number }) {
+    const { role_id, permission_id } = data;
+    const link = await this.prisma.rolePermissionLinks.findFirst({
+      where: {
+        role_id: role_id,
+        permission_id: permission_id
+      }
+    });
+    if (!link) {
+      throw new Error('错误的权限配置！');
+    }
+    // 这里基本是只删除一个
+    const r = await this.prisma.rolePermissionLinks.deleteMany({
+      where: {
+        role_id: role_id,
+        permission_id: permission_id
+      }
+    });
+    console.log('r', r);
+    if (r) {
+      this.log.system_operate({
+        success: true,
+        operate_type: OperateType.DELETE,
+        operate_object_type: OperateObjectType.ROLE,
+        operate_object_id: role_id,
+        operate_content: JSON.stringify(data),
         operate_result: JSON.stringify(r)
       });
       return r;

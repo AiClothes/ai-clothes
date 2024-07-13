@@ -32,7 +32,17 @@ let ProductCategoryController = class ProductCategoryController {
     }
     async findAll(query) {
         try {
-            return await this.productCategoryService.findAll(query);
+            const count = await this.productCategoryService.count(query);
+            const list = await this.productCategoryService.findAll(query);
+            return { count, list };
+        }
+        catch (e) {
+            throw new common_1.HttpException({ message: e.message, errors: e }, common_1.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async findTree(query) {
+        try {
+            return await this.productCategoryService.findTree(query);
         }
         catch (e) {
             throw new common_1.HttpException({ message: e.message, errors: e }, common_1.HttpStatus.BAD_REQUEST);
@@ -78,6 +88,13 @@ __decorate([
     __metadata("design:paramtypes", [query_system_operate_log_dto_1.QueryProductCategoryDto]),
     __metadata("design:returntype", Promise)
 ], ProductCategoryController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Post)('find-tree'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], ProductCategoryController.prototype, "findTree", null);
 __decorate([
     (0, common_1.Post)('find-one'),
     __param(0, (0, common_1.Body)('id')),

@@ -15,15 +15,49 @@ export declare class ProductCategoryService {
         updated_at: Date;
         deleted_at: Date;
     }>;
-    findAll(query: QueryProductCategoryDto): import(".prisma/client").Prisma.PrismaPromise<{
+    findAll(query: QueryProductCategoryDto): import(".prisma/client").Prisma.PrismaPromise<({
+        parent: {
+            id: number;
+            name: string;
+            parent_id: number;
+            created_at: Date;
+            updated_at: Date;
+            deleted_at: Date;
+        };
+        children: {
+            id: number;
+            name: string;
+            parent_id: number;
+            created_at: Date;
+            updated_at: Date;
+            deleted_at: Date;
+        }[];
+    } & {
         id: number;
         name: string;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
         deleted_at: Date;
-    }[]>;
-    count(): import(".prisma/client").Prisma.PrismaPromise<number>;
+    })[]>;
+    count(query: QueryProductCategoryDto): import(".prisma/client").Prisma.PrismaPromise<number>;
+    findTree(query: object): import(".prisma/client").Prisma.PrismaPromise<({
+        children: {
+            id: number;
+            name: string;
+            parent_id: number;
+            created_at: Date;
+            updated_at: Date;
+            deleted_at: Date;
+        }[];
+    } & {
+        id: number;
+        name: string;
+        parent_id: number;
+        created_at: Date;
+        updated_at: Date;
+        deleted_at: Date;
+    })[]>;
     findOne(id: number): import(".prisma/client").Prisma.Prisma__ProductCategoryClient<{
         id: number;
         name: string;

@@ -18,6 +18,7 @@ export class CreateUserDto {
   phone: string;
 
   // @IsNotEmpty({ message: 'password is required' })
+  @IsString()
   password?: string;
 
   @IsArray()

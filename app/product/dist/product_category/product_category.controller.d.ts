@@ -14,13 +14,50 @@ export declare class ProductCategoryController {
         deleted_at: Date;
     }>;
     findAll(query: QueryProductCategoryDto): Promise<{
+        count: number;
+        list: ({
+            parent: {
+                id: number;
+                name: string;
+                parent_id: number;
+                created_at: Date;
+                updated_at: Date;
+                deleted_at: Date;
+            };
+            children: {
+                id: number;
+                name: string;
+                parent_id: number;
+                created_at: Date;
+                updated_at: Date;
+                deleted_at: Date;
+            }[];
+        } & {
+            id: number;
+            name: string;
+            parent_id: number;
+            created_at: Date;
+            updated_at: Date;
+            deleted_at: Date;
+        })[];
+    }>;
+    findTree(query: object): Promise<({
+        children: {
+            id: number;
+            name: string;
+            parent_id: number;
+            created_at: Date;
+            updated_at: Date;
+            deleted_at: Date;
+        }[];
+    } & {
         id: number;
         name: string;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
         deleted_at: Date;
-    }[]>;
+    })[]>;
     findOne(id: number): Promise<{
         id: number;
         name: string;

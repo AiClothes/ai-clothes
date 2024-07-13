@@ -44,8 +44,20 @@ export class AuthController {
   // 登出
   @Post('logout')
   logout(@Request() req) {
-    console.log('req.user', req.user);
-    return this.authService.logout(req.user);
+    console.log('req.user', req);
+    return this.authService.logout(req);
+  }
+
+  // @UseGuards(AuthGuard)
+  @Post('profile')
+  @Get('profile')
+  async getProfile(@Request() req) {
+    const { user } = req;
+    const { user_id, username, ...reset } = user;
+    console.log('user', user);
+    // 获取完整用户信息
+    const fullData = await this.userService.findOne(user_id);
+    return { id: user_id, user_id: user_id, username, ...reset, ...fullData };
   }
 
   // 判断当前用户是否有某个权限

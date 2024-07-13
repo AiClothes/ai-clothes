@@ -23,9 +23,9 @@ let LogService = class LogService {
         this.requestContextService = requestContextService;
     }
     system_operate(data) {
-        const { success, operate_type, operate_object_type, operate_object_id, operate_content, operate_result } = data;
+        const { success, operate_type, operate_object_type, operate_object_id, operate_content, operate_result, request: selfRequest } = data;
         const request = this.requestContextService.getRequest();
-        const { ip, method, url, user } = request;
+        const { ip, method, url, user } = request || selfRequest || {};
         console.log('system_operate', ip, method, url, user, JSON.stringify(data));
         this.logClient.emit('system_operate_log_created', {
             operate_user: 1,

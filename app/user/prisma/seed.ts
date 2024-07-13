@@ -12,7 +12,14 @@ async function main() {
     // 创建权限相关
     const permissions: { name: string; type: PermissionType }[] = [
       { name: '角色管理', type: PermissionType.MENU },
-      { name: '用户管理', type: PermissionType.MENU }
+      { name: '用户管理', type: PermissionType.MENU },
+      { name: '小程序配置', type: PermissionType.MENU },
+      { name: '订单管理', type: PermissionType.MENU },
+      { name: '商品管理', type: PermissionType.MENU },
+      { name: '作品管理', type: PermissionType.MENU },
+      { name: 'AI绘图管理', type: PermissionType.MENU },
+      { name: '数据看板', type: PermissionType.MENU },
+      { name: '客户管理', type: PermissionType.MENU }
     ];
 
     const permissionData: any[] = [];

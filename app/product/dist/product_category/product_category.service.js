@@ -37,8 +37,6 @@ let ProductCategoryService = class ProductCategoryService {
     }
     findAll(query) {
         const { current = 1, page_size = 20, name, parent_id } = query;
-        const skip = (current - 1) * page_size;
-        const take = page_size;
         return this.prisma.productCategory.findMany({
             where: {
                 deleted_at: null,
@@ -47,17 +45,35 @@ let ProductCategoryService = class ProductCategoryService {
                 },
                 ...(parent_id ? { parent_id: parent_id } : {})
             },
+            include: {
+                parent: true,
+                children: true
+            },
             orderBy: {
                 created_at: 'desc'
-            },
-            skip: skip,
-            take: take
+            }
         });
     }
-    count() {
+    count(query) {
+        const { name, parent_id } = query;
         return this.prisma.productCategory.count({
             where: {
-                deleted_at: null
+                deleted_at: null,
+                name: {
+                    contains: name
+                },
+                ...(parent_id ? { parent_id: parent_id } : {})
+            }
+        });
+    }
+    findTree(query) {
+        return this.prisma.productCategory.findMany({
+            where: {
+                deleted_at: null,
+                parent_id: null
+            },
+            include: {
+                children: true
             }
         });
     }
@@ -78,7 +94,7 @@ let ProductCategoryService = class ProductCategoryService {
         });
         this.log.system_operate({
             success: true,
-            operate_type: core_1.OperateType.CREATE,
+            operate_type: core_1.OperateType.UPDATE,
             operate_object_type: core_1.OperateObjectType.PRODUCT_CATEGORY,
             operate_object_id: r.id,
             operate_content: JSON.stringify(old),

@@ -8,6 +8,7 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { QueryUserDto } from './dto/query-user.dto';
 
 @Controller('user')
 export class UserController {
@@ -27,9 +28,14 @@ export class UserController {
   }
 
   @Post('find-all')
-  async findAll(@Body() query: UpdateUserDto) {
+  async findAll(@Body() query: QueryUserDto) {
     try {
-      return await this.userService.findAll(query);
+      const count = await this.userService.count(query);
+      const list = await this.userService.findAll(query);
+      return {
+        count: count,
+        list: list
+      };
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },
@@ -66,6 +72,30 @@ export class UserController {
   async remove(@Body('id') id: number) {
     try {
       return await this.userService.remove(id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('bind-role')
+  async bindRole(@Body() data: { role_id: number; user_id: number }) {
+    try {
+      return await this.userService.bindRole(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('unbind-role')
+  async unbindRole(@Body() data: { role_id: number; user_id: number }) {
+    try {
+      return await this.userService.unbindRole(data);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

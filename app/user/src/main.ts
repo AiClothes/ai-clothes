@@ -7,6 +7,8 @@ import {
   MICROSERVICE_PORTS
 } from '@one-server/core';
 import { HttpException, ValidationPipe, VersioningType } from '@nestjs/common';
+import helmet from 'helmet';
+
 // import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
@@ -32,6 +34,12 @@ async function bootstrap() {
     // 开启GUI检查程序
     snapshot: true
   });
+
+  // 安全防护
+  app.use(helmet());
+  // 跨域
+  app.enableCors();
+
   // 全局基础路由前缀
   app.setGlobalPrefix('api-user');
   app.enableVersioning({

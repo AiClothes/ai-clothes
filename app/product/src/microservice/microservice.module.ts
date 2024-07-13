@@ -22,6 +22,14 @@ import { MICROSERVICE, MICROSERVICE_PORTS } from '@one-server/core';
           host: '127.0.0.1',
           port: MICROSERVICE_PORTS.LOG_SERVICE
         }
+      },
+      {
+        name: MICROSERVICE.ORDER_SERVICE,
+        transport: Transport.TCP,
+        options: {
+          host: '127.0.0.1',
+          port: MICROSERVICE_PORTS.ORDER_SERVICE
+        }
       }
     ])
   ],

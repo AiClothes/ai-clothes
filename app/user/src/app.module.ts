@@ -23,7 +23,6 @@ import { ContextMiddleware } from './common/middleware/ContextMiddleWare';
 import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
 import { AuthModule } from './auth/auth.module';
-import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -53,8 +52,7 @@ import { ProductModule } from './product/product.module';
     AuthModule,
     PermissionModule,
     UserModule,
-    RoleModule,
-    ProductModule
+    RoleModule
   ],
   controllers: [AppController],
   providers: [

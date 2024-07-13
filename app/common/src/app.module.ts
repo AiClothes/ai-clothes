@@ -1,27 +1,34 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import {
-  MICROSERVICE,
-  MICROSERVICE_PORTS,
-  TransformInterceptor
-} from '@one-server/core';
+import { TransformInterceptor } from '@one-server/core';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { MicroservicesModule } from './microservice/microservice.module';
+import { JwtModule } from '@nestjs/jwt';
+import { ContextModule } from './context/context.module';
+import { LogModule } from './log/log.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
     // 注册微服务
-    ClientsModule.register([
-      {
-        name: MICROSERVICE.USER_SERVICE,
-        transport: Transport.TCP,
-        options: {
-          host: '127.0.0.1',
-          port: MICROSERVICE_PORTS.USER_SERVICE
-        }
+    MicroservicesModule,
+    // 注册全局基础使用模块
+    PrismaModule,
+    LogModule,
+    ContextModule,
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT_SECRET,
+      signOptions: {
+        // 超时时间 120s
+        // expiresIn: '120s'
+        // 超时时间 24小时
+        expiresIn: '24h'
       }
-    ])
+    }),
+    CommonModule
   ],
   controllers: [AppController],
   providers: [

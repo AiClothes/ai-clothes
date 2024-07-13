@@ -47,9 +47,9 @@ export class AuthService {
     return {};
   }
 
-  // 登出
-  async logout(user: any): Promise<any> {
-    // 清除jwt
+  // 登出 前端清除
+  async logout(req: any): Promise<any> {
+    // 清除jwt 将jwt加入到指定的黑名单中即可
     return {
       message: '登出成功'
     };
