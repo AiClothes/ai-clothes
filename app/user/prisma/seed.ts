@@ -76,11 +76,11 @@ async function main() {
     }
 
     // 创建用户
-    const adminEmail = '2284730142@qq.com';
+    const adminEmail = '15323399792@qq.com';
     const nickname = '超级管理员';
-    const username = 'aiclothesadmin';
-    const phone = '18852675790';
-    const password = 'qwer1234';
+    const username = '15323399792';
+    const phone = '15323399792';
+    const password = 'CHISHEN168';
 
     const existingUser = await prisma.user.upsert({
       where: {
