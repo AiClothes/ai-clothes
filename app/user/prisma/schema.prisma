@@ -111,17 +111,19 @@ model RolePermissionLinks {
 // 前台用用户信息表
 model FrontUser {
   // 用户id
-  id       Int     @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   // 微信openid
-  openid   String  @unique
+  openid      String  @unique
+  // 微信session_key
+  session_key String?
   // 昵称 [需要程序限制，不超过24个字符]
-  nickname String
+  nickname    String
   // 头像
-  avatar   String  @db.VarChar(255)
+  avatar      String  @db.VarChar(255)
   // 地址
-  address  String? @db.VarChar(255)
+  address     String? @db.VarChar(255)
   // 电话 [只接受中国大陆用户的微信认证]
-  phone    String? @db.VarChar(11)
+  phone       String? @db.VarChar(11)
 
   // 用户状态[0:拉黑 1:正常]
   status Int @default(1)
@@ -137,34 +139,48 @@ model FrontUser {
   @@map("front_users")
 }
 
+// 作品来源
 enum WorkType {
+  // 自己构建的作品 如AI绘图使用创建的
   BUILD
+  // 上传自己的本地作品
   UPLOAD
+  // 生成的产品（用商品生产的）
+  BUILD_PRODUCT
 }
 
+// 作品创作方式
 enum WorkCreateType {
   NONE
+  // 图生图
   CREATE_BY_IMAGE
+  // 文生图
   CREATE_BY_TEXT
+  // 抠图 这个是用其他作品抠出来的
+  PHOTOSHOP
+  // 合成型的，如生产的商品
+  COMPOSITE
 }
 
 // 用户作品表
 model UserWork {
   // 作品id
-  id          Int    @id @default(autoincrement())
+  id          Int              @id @default(autoincrement())
   // 作品名称
   name        String
-  // 作品描述
+  // 作品描述、简介
   description String
-  // 作品封面
-  cover       String
+  // 作品封面 上传的图片就是作品
+  cover       String?
   // 作品内容[作品地址]
-  content     String @db.VarChar(255)
-  // 作品状态
-  status      Int
+  content     String           @db.VarChar(255)
+  // 产品型作品，多图
+  images      UserWorkImages[]
+  // 作品状态 默认都是1 如果外部传入0 指定内容为草稿，用于用户下次进来快速支持的
+  status      Int              @default(1)
 
   // 作品信息 [记录一些图片的本身信息]
-  info String @db.Text
+  info String? @db.Text
 
   // 是否公开作品
   is_public  Boolean  @default(false) @db.TinyInt
@@ -180,6 +196,12 @@ model UserWork {
   parent           UserWork?      @relation("ParentChild", fields: [create_parent_id], references: [id])
   children         UserWork[]     @relation("ParentChild")
 
+  // 标记用户是否删除该内容【为了做垃圾箱】
+  is_delete Boolean @default(false) @db.TinyInt
+
+  // 特殊业务绑定 原始的作品id
+  product_id Int?
+
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
   deleted_at DateTime?
@@ -190,4 +212,23 @@ model UserWork {
   user    FrontUser @relation(fields: [user_id], references: [id])
 
   @@map("user_works")
+}
+
+// 用户作品的多个图片
+model UserWorkImages {
+  // 图片id
+  id  Int    @id @default(autoincrement())
+  // 图片地址
+  url String @db.VarChar(255)
+
+  // 作品id
+  work_id Int
+  // 作品信息
+  work    UserWork @relation(fields: [work_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("user_work_images")
 }

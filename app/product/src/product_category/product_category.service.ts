@@ -47,10 +47,10 @@ export class ProductCategoryService {
       include: {
         parent: true,
         children: true
-      },
-      orderBy: {
-        created_at: 'desc'
       }
+      // orderBy: {
+      //   created_at: 'desc'
+      // }
       // skip: skip,
       // take: take
     });

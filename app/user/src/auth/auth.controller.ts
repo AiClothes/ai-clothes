@@ -6,12 +6,14 @@ import {
   HttpCode,
   HttpStatus,
   UseGuards,
-  Get
+  Get,
+  HttpException
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UserService } from '../user/user.service';
 import { RoleService } from '../role/role.service';
 import { OFF_JWT } from '@one-server/core';
+import { OnlineWxUserDto } from './dto/online-wx-user.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -97,5 +99,18 @@ export class AuthController {
     return {
       access: access
     };
+  }
+
+  @OFF_JWT()
+  @Post('online-wx-user')
+  async onlineWXUser(@Body() data: OnlineWxUserDto) {
+    try {
+      return await this.authService.onlineWXUser(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
   }
 }

@@ -298,4 +298,22 @@ export class UserService {
     }
     throw new Error(ErrorInfo.UPDATE);
   }
+
+  async findWXOne(id: number, openid: string) {
+    return this.prisma.frontUser.findUnique({
+      where: {
+        id: id,
+        openid: openid
+      },
+      // 过滤部分显示内容
+      select: {
+        id: true,
+        openid: true,
+        nickname: true,
+        avatar: true,
+        created_at: true,
+        phone: true
+      }
+    });
+  }
 }

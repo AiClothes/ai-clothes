@@ -7,8 +7,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { RoleModule } from '../role/role.module';
 import { UserModule } from '../user/user.module';
 import { AuthGuard } from '@one-server/core';
+import { HttpModule } from '@nestjs/axios';
 
-console.log('process.env.JWT_SECRET', process.env.JWT_SECRET);
+// console.log('process.env.JWT_SECRET', process.env.JWT_SECRET);
 
 @Module({
   imports: [
@@ -19,9 +20,10 @@ console.log('process.env.JWT_SECRET', process.env.JWT_SECRET);
         // 超时时间 120s
         // expiresIn: '120s'
         // 超时时间 24小时
-        expiresIn: '24h'
+        expiresIn: '168h'
       }
     }),
+    HttpModule,
     UserModule,
     RoleModule
   ],

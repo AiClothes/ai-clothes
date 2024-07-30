@@ -15,6 +15,14 @@ import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
 import { HSSign, SignParams } from './utils/hs_sign';
 import * as qs from 'querystring';
+import * as TencentCloudAiArt from 'tencentcloud-sdk-nodejs-aiart';
+import { TextToImageRequest } from 'tencentcloud-sdk-nodejs-aiart/src/services/aiart/v20221229/aiart_models';
+import {
+  AIDrawDto,
+  MajorStyle,
+  styleDetails,
+  StyleItem
+} from './dto/ai-draw.dto';
 
 // 插件使用
 dayjs.extend(utc);
@@ -233,7 +241,8 @@ export class CommonService {
     // const service = 'iam';
 
     const body = {
-      image_url: image_url
+      image_url: image_url,
+      return_foreground_image: 1
     };
 
     console.log('body', qs.stringify(body));
@@ -303,5 +312,73 @@ export class CommonService {
       });
 
     return response.data;
+  }
+
+  // AI绘图
+  async aiDraw(r: AIDrawDto) {
+    const { text, ng_text, major_style, style, resolution_ratio } = r;
+
+    // 定义一个函数返回风格
+    function getStyleItem(
+      major?: MajorStyle,
+      detail?: string
+    ): StyleItem | undefined {
+      const details = styleDetails[major];
+      if (details && details[detail] !== undefined) {
+        return {
+          major,
+          detail,
+          code: details[detail]
+        };
+      }
+      return undefined;
+    }
+
+    const AiArtClient = TencentCloudAiArt.aiart.v20221229.Client;
+
+    // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
+    // 代码泄露可能会导致 SecretId 和 SecretKey 泄露，并威胁账号下所有资源的安全性。以下代码示例仅供参考，建议采用更安全的方式来使用密钥，请参见：https://cloud.tencent.com/document/product/1278/85305
+    // 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
+    const clientConfig = {
+      credential: {
+        secretId: process.env.SECRET_ID,
+        secretKey: process.env.SECRET_KEY
+      },
+      region: 'ap-guangzhou',
+      profile: {
+        httpProfile: {
+          endpoint: 'aiart.tencentcloudapi.com'
+        }
+      }
+    };
+
+    // 实例化要请求产品的client对象,clientProfile是可选的
+
+    let myStyle = null;
+    if (major_style && style) {
+      myStyle = getStyleItem(major_style, style);
+
+      if (!myStyle) {
+        throw new Error('未知风格！');
+      }
+    }
+
+    const client = new AiArtClient(clientConfig);
+    const params: TextToImageRequest = {
+      Prompt: text,
+      ...(ng_text ? { NegativePrompt: ng_text } : {}),
+      ...(myStyle ? { Styles: [myStyle.code] } : {}),
+      // 不标记ai logo
+      LogoAdd: 0,
+      ResultConfig: {
+        // 768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9）
+        Resolution: resolution_ratio || '1024:1024'
+      }
+    };
+    const data = await client.TextToImage(params);
+    // console.log(data);
+    const { RequestId, ResultImage } = data;
+    // 需要在前端把base64数据，转化为实际的图片地址
+    return ResultImage;
   }
 }

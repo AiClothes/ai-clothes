@@ -12,6 +12,8 @@ import { UpdateCommonDto } from './dto/update-common.dto';
 import { QueryCommonDto } from './dto/query-common.dto';
 import { UploadFileDto } from './dto/upload-file.dto';
 import { GeneralSegmentDto } from './dto/general-segment.dto';
+import { AIDrawDto } from './dto/ai-draw.dto';
+import { WX } from '@one-server/core';
 
 @Controller('common')
 export class CommonController {
@@ -105,6 +107,7 @@ export class CommonController {
   }
 
   // 查询上传图片的token【前端用】
+  @WX()
   @Post('upload-user-file')
   async uploadUserFile(@Body() data: UploadFileDto) {
     try {
@@ -120,6 +123,7 @@ export class CommonController {
   }
 
   // 接入第三方的api 抠图
+  @WX()
   @Post('ai-cut')
   async aiCut(@Body() data: GeneralSegmentDto) {
     try {
@@ -132,5 +136,17 @@ export class CommonController {
     }
   }
 
-  // TODO  AI绘图 API
+  //  AI绘图 API 腾讯官方原版
+  @WX()
+  @Post('ai-draw')
+  async aiDraw(@Body() data: AIDrawDto) {
+    try {
+      return await this.commonService.aiDraw(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
 }

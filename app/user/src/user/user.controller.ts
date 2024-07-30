@@ -3,12 +3,14 @@ import {
   Post,
   Body,
   HttpException,
-  HttpStatus
+  HttpStatus,
+  Request
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { QueryUserDto } from './dto/query-user.dto';
+import { WX } from '@one-server/core';
 
 @Controller('user')
 export class UserController {
@@ -96,6 +98,21 @@ export class UserController {
   async unbindRole(@Body() data: { role_id: number; user_id: number }) {
     try {
       return await this.userService.unbindRole(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @WX()
+  @Post('wx-profile')
+  async getProfile(@Body() data, @Request() req) {
+    try {
+      const { user } = req;
+      const { user_id, openid, ...reset } = user;
+      return await this.userService.findWXOne(user_id, openid);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

@@ -18,6 +18,7 @@ const product_category_service_1 = require("./product_category.service");
 const create_product_category_dto_1 = require("./dto/create-product_category.dto");
 const query_system_operate_log_dto_1 = require("./dto/query-system_operate_log.dto");
 const update_product_category_dto_1 = require("./dto/update-product_category.dto");
+const core_1 = require("@one-server/core");
 let ProductCategoryController = class ProductCategoryController {
     constructor(productCategoryService) {
         this.productCategoryService = productCategoryService;
@@ -72,6 +73,16 @@ let ProductCategoryController = class ProductCategoryController {
             throw new common_1.HttpException({ message: e.message, errors: e }, common_1.HttpStatus.BAD_REQUEST);
         }
     }
+    async findAllWX(query) {
+        try {
+            const count = await this.productCategoryService.count(query);
+            const list = await this.productCategoryService.findAll(query);
+            return { count, list };
+        }
+        catch (e) {
+            throw new common_1.HttpException({ message: e.message, errors: e }, common_1.HttpStatus.BAD_REQUEST);
+        }
+    }
 };
 exports.ProductCategoryController = ProductCategoryController;
 __decorate([
@@ -116,6 +127,14 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ProductCategoryController.prototype, "remove", null);
+__decorate([
+    (0, core_1.OFF_JWT)(),
+    (0, common_1.Post)('wx-find-all'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [query_system_operate_log_dto_1.QueryProductCategoryDto]),
+    __metadata("design:returntype", Promise)
+], ProductCategoryController.prototype, "findAllWX", null);
 exports.ProductCategoryController = ProductCategoryController = __decorate([
     (0, common_1.Controller)('product-category'),
     __metadata("design:paramtypes", [product_category_service_1.ProductCategoryService])

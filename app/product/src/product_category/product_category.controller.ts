@@ -9,6 +9,7 @@ import { ProductCategoryService } from './product_category.service';
 import { CreateProductCategoryDto } from './dto/create-product_category.dto';
 import { QueryProductCategoryDto } from './dto/query-system_operate_log.dto';
 import { UpdateProductCategoryDto } from './dto/update-product_category.dto';
+import { OFF_JWT, WX } from '@one-server/core';
 
 @Controller('product-category')
 export class ProductCategoryController {
@@ -82,6 +83,21 @@ export class ProductCategoryController {
   async remove(@Body('id') id: number) {
     try {
       return await this.productCategoryService.remove(id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @OFF_JWT()
+  @Post('wx-find-all')
+  async findAllWX(@Body() query: QueryProductCategoryDto) {
+    try {
+      const count = await this.productCategoryService.count(query);
+      const list = await this.productCategoryService.findAll(query);
+      return { count, list };
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

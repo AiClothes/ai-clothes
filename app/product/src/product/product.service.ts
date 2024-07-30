@@ -271,7 +271,7 @@ export class ProductService {
 
   // 查询商品列表 [简单]
   async findSimpleAll(query: QueryProductDto) {
-    const { current = 1, page_size = 20, name, status } = query;
+    const { current = 1, page_size = 10, name, status, category_id } = query;
     // const skip = (current - 1) * page_size;
     // const take = page_size;
     return this.prisma.product.findMany({
@@ -280,19 +280,53 @@ export class ProductService {
         name: {
           contains: name
         },
-        ...(status ? { status } : {})
+        ...(status ? { status } : {}),
+        ...(category_id ? { category_id } : {})
       },
       select: {
         id: true,
         name: true,
         status: true,
-        product_category: true
+        product_category: true,
+        description: true,
+        price: true,
+        image: true
       },
       orderBy: {
         created_at: 'desc'
       }
       // skip: skip,
       // take: take
+    });
+  }
+
+  async findWXAll(query: QueryProductDto) {
+    const { current = 1, page_size = 10, name, status, category_id } = query;
+    const skip = (current - 1) * page_size;
+    const take = page_size;
+    return this.prisma.product.findMany({
+      where: {
+        deleted_at: null,
+        name: {
+          contains: name
+        },
+        ...(status ? { status } : {}),
+        ...(category_id ? { category_id } : {})
+      },
+      select: {
+        id: true,
+        name: true,
+        status: true,
+        product_category: true,
+        description: true,
+        price: true,
+        image: true
+      },
+      orderBy: {
+        created_at: 'desc'
+      },
+      skip: skip,
+      take: take
     });
   }
 

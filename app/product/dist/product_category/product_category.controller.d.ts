@@ -82,4 +82,32 @@ export declare class ProductCategoryController {
         updated_at: Date;
         deleted_at: Date;
     }>;
+    findAllWX(query: QueryProductCategoryDto): Promise<{
+        count: number;
+        list: ({
+            parent: {
+                id: number;
+                name: string;
+                parent_id: number;
+                created_at: Date;
+                updated_at: Date;
+                deleted_at: Date;
+            };
+            children: {
+                id: number;
+                name: string;
+                parent_id: number;
+                created_at: Date;
+                updated_at: Date;
+                deleted_at: Date;
+            }[];
+        } & {
+            id: number;
+            name: string;
+            parent_id: number;
+            created_at: Date;
+            updated_at: Date;
+            deleted_at: Date;
+        })[];
+    }>;
 }

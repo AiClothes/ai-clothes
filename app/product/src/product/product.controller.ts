@@ -18,6 +18,7 @@ import { UpdateProductSpecificationCombinationDto } from './dto/update-product-s
 import { UpdateProductSpecificationDto } from './dto/update-product-specification.dto';
 import { UpdateProductSpecificationValueDto } from './dto/update-product-specification-value.dto';
 import { MessagePattern } from '@nestjs/microservices';
+import { OFF_JWT, WX } from '@one-server/core';
 
 @Controller('product')
 export class ProductController {
@@ -229,6 +230,63 @@ export class ProductController {
   ) {
     try {
       return await this.productService.updateSpecificationCombination(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @OFF_JWT()
+  @Post('wx-find-all')
+  async findSimpleAllWX(@Body() query: QueryProductDto) {
+    try {
+      if (!query.category_id) {
+        throw new Error('无法查询商品信息！');
+      }
+      const _query = {
+        category_id: query.category_id,
+        status: 1
+      };
+      const count = await this.productService.count(_query);
+      const list = await this.productService.findSimpleAll(_query);
+      return { count, list };
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @WX()
+  @Post('wx-find-list')
+  async findAllWX(@Body() query: QueryProductDto) {
+    try {
+      if (!query.category_id) {
+        throw new Error('无法查询商品信息！');
+      }
+      const _query = {
+        category_id: query.category_id,
+        status: 1
+      };
+      const count = await this.productService.count(_query);
+      const list = await this.productService.findSimpleAll(_query);
+      return { count, list };
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @WX()
+  @Post('wx-find-one')
+  async findOneWX(@Body('id') id: number) {
+    try {
+      return await this.productService.findOne(id);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

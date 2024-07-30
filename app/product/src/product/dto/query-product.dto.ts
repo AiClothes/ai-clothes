@@ -23,4 +23,8 @@ export class QueryProductDto {
   @IsOptional()
   @IsEnum([0, 1], { message: 'status must be 0 or 1' })
   status?: number;
+
+  @IsOptional()
+  @IsNumber()
+  category_id?: number;
 }

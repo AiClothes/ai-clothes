@@ -48,9 +48,6 @@ let ProductCategoryService = class ProductCategoryService {
             include: {
                 parent: true,
                 children: true
-            },
-            orderBy: {
-                created_at: 'desc'
             }
         });
     }

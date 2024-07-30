@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const core_1 = require("@nestjs/core");
 const decorators_1 = require("../decorators");
+const is_wx_dectory_1 = require("../decorators/is_wx.dectory");
 let AuthGuard = class AuthGuard {
     constructor(jwtService, reflector) {
         this.jwtService = jwtService;
@@ -27,6 +28,10 @@ let AuthGuard = class AuthGuard {
         if (isOffJWT) {
             return true;
         }
+        const isWXToken = this.reflector.getAllAndOverride(is_wx_dectory_1.IS_WX, [
+            context.getHandler(),
+            context.getClass()
+        ]);
         const request = context.switchToHttp().getRequest();
         const token = this.extractTokenFromHeader(request);
         if (!token) {
@@ -40,6 +45,16 @@ let AuthGuard = class AuthGuard {
         }
         catch {
             throw new common_1.UnauthorizedException();
+        }
+        if (isWXToken) {
+            if (!request['user'].openid) {
+                throw new common_1.UnauthorizedException();
+            }
+        }
+        else {
+            if (!request['user'].__admin_a318) {
+                throw new common_1.UnauthorizedException();
+            }
         }
         return true;
     }
