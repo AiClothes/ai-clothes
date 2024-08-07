@@ -221,6 +221,9 @@ model UserWorkImages {
   // 图片地址
   url String @db.VarChar(255)
 
+  // 图片的其他信息 0 = 正面 1 = 背面
+  front_type Int @default(0)
+
   // 作品id
   work_id Int
   // 作品信息

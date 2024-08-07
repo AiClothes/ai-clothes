@@ -52,6 +52,16 @@ export class ProductSpecificationCombination {
 
   // 非必填项
   @IsOptional()
+  @IsUrl()
+  draw_image?: string;
+
+  // 非必填项
+  @IsOptional()
+  @IsUrl()
+  draw_image_back?: string;
+
+  // 非必填项
+  @IsOptional()
   @IsNumber()
   price?: number;
 

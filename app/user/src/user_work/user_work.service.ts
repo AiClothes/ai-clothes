@@ -63,6 +63,39 @@ export class UserWorkService {
     return r;
   }
 
+  // updateWorkImages用于为产品相关的作品进行保存
+  async updateWorkImages(
+    data: { work_id: number; url: string; front_type: number },
+    user_id: number
+  ) {
+    const { work_id, url, front_type } = data;
+    const images = await this.prisma.userWorkImages.findMany({
+      where: {
+        id: work_id
+      }
+    });
+    const old = images.find((r) => r.front_type === front_type);
+    if (old) {
+      const r = await this.prisma.userWorkImages.update({
+        where: {
+          id: old.id
+        },
+        data: {
+          url: url
+        }
+      });
+      return r;
+    }
+    const r = await this.prisma.userWorkImages.create({
+      data: {
+        work_id: work_id,
+        url: url,
+        front_type: front_type
+      }
+    });
+    return r;
+  }
+
   // findAll全部用来使用分页查询方案
   findAll(query: QueryUserWorkDto) {
     const { current = 1, page_size = 20 } = query;

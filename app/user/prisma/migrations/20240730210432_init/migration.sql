@@ -63,6 +63,7 @@ CREATE TABLE `role_permission_links` (
 CREATE TABLE `front_users` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `openid` VARCHAR(191) NOT NULL,
+    `session_key` VARCHAR(191) NULL,
     `nickname` VARCHAR(191) NOT NULL,
     `avatar` VARCHAR(255) NOT NULL,
     `address` VARCHAR(255) NULL,
@@ -82,19 +83,33 @@ CREATE TABLE `user_works` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
-    `cover` VARCHAR(191) NOT NULL,
+    `cover` VARCHAR(191) NULL,
     `content` VARCHAR(255) NOT NULL,
-    `status` INTEGER NOT NULL,
-    `info` TEXT NOT NULL,
+    `status` INTEGER NOT NULL DEFAULT 1,
+    `info` TEXT NULL,
     `is_public` BOOLEAN NOT NULL DEFAULT false,
     `is_collect` BOOLEAN NOT NULL DEFAULT false,
-    `source` ENUM('BUILD', 'UPLOAD') NOT NULL,
-    `create_type` ENUM('NONE', 'CREATE_BY_IMAGE', 'CREATE_BY_TEXT') NOT NULL,
+    `source` ENUM('BUILD', 'UPLOAD', 'BUILD_PRODUCT') NOT NULL,
+    `create_type` ENUM('NONE', 'CREATE_BY_IMAGE', 'CREATE_BY_TEXT', 'PHOTOSHOP', 'COMPOSITE') NOT NULL,
     `create_parent_id` INTEGER NULL,
+    `is_delete` BOOLEAN NOT NULL DEFAULT false,
+    `product_id` INTEGER NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
     `deleted_at` DATETIME(3) NULL,
     `user_id` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `user_work_images` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `url` VARCHAR(255) NOT NULL,
+    `work_id` INTEGER NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
+    `deleted_at` DATETIME(3) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -119,3 +134,6 @@ ALTER TABLE `user_works` ADD CONSTRAINT `user_works_create_parent_id_fkey` FOREI
 
 -- AddForeignKey
 ALTER TABLE `user_works` ADD CONSTRAINT `user_works_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `front_users`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `user_work_images` ADD CONSTRAINT `user_work_images_work_id_fkey` FOREIGN KEY (`work_id`) REFERENCES `user_works`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

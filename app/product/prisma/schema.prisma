@@ -153,13 +153,15 @@ model ProductSpecificationCombination {
   id Int @id @default(autoincrement())
 
   // 商品数量
-  quantity   Int
+  quantity        Int
   // 最终商品价格，多个规格组合成一种商品后产生一种价格
-  price      Float?
+  price           Float?
   // 规格组合图片
-  image      String?
-  // 可绘制图片
-  draw_image String?
+  image           String?
+  // 可绘制图片 正面
+  draw_image      String?
+  // 可绘制图片 反面
+  draw_image_back String?
 
   // 规格值组合key [规格值id组合] 用,隔开
   specification_value_ids String

@@ -131,6 +131,8 @@ export class ProductService {
                 specification_value_ids: specification_value_ids.join(','),
                 quantity: current_combine?.quantity || 0,
                 image: current_combine?.image,
+                draw_image: current_combine?.draw_image,
+                draw_image_back: current_combine?.draw_image_back,
                 price: current_combine?.price
               }
             });
@@ -748,6 +750,8 @@ export class ProductService {
                 specification_value_ids: specification_value_ids.join(','),
                 quantity: current_combine?.quantity || 0,
                 image: current_combine?.image,
+                draw_image: current_combine?.draw_image,
+                draw_image_back: current_combine?.draw_image_back,
                 price: current_combine?.price
               }
             });
@@ -919,6 +923,8 @@ export class ProductService {
                 specification_value_ids: specification_value_ids.join(','),
                 quantity: current_combine?.quantity || 0,
                 image: current_combine?.image,
+                draw_image: current_combine?.draw_image,
+                draw_image_back: current_combine?.draw_image_back,
                 price: current_combine?.price
               }
             });

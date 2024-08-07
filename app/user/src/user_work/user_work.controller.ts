@@ -36,6 +36,25 @@ export class UserWorkController {
     }
   }
 
+  @WX()
+  @Post('update-work-images')
+  async updateWorkImages(
+    @Body() data: { work_id: number; url: string; front_type: number },
+    @Request() req
+  ) {
+    try {
+      const { user } = req;
+      const { user_id, openid, ...reset } = user;
+      return await this.userWorkService.updateWorkImages(data, user_id);
+    } catch (e) {
+      console.log('e', e);
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
   @Post('find-all')
   async findAll(@Body() query: QueryUserWorkDto) {
     try {
