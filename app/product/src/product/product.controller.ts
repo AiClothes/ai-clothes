@@ -242,11 +242,11 @@ export class ProductController {
   @Post('wx-find-all')
   async findSimpleAllWX(@Body() query: QueryProductDto) {
     try {
-      if (!query.category_id) {
-        throw new Error('无法查询商品信息！');
-      }
+      // if (!query.category_id) {
+      //   throw new Error('无法查询商品信息！');
+      // }
       const _query = {
-        category_id: query.category_id,
+        ...(query.category_id ? { category_id: query.category_id } : {}),
         status: 1
       };
       const count = await this.productService.count(_query);

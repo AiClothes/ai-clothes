@@ -31,6 +31,8 @@ model ProductCategory {
 
   // 分类名称
   name String
+  // 分类排序
+  sort Int    @default(0)
 
   // 多级分类
   parent_id Int?
@@ -63,6 +65,10 @@ model Product {
   unit        String
   // 商品状态[0:下架, 1:上架]
   status      Int     @default(0)
+  // 商品排序 影响前端排序
+  sort        Int     @default(0)
+  // 付款数量（给前端做的）
+  pay_account Int     @default(0)
 
   // 商品图片[主页用图片 + 详情页图片] 这个是冗余字段 更新图片表的时候，同步更新这个
   image          String

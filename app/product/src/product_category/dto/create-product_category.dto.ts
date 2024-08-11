@@ -29,5 +29,9 @@ export class CreateProductCategoryDto {
 
   @IsOptional()
   @IsNumber()
+  sort?: number;
+
+  @IsOptional()
+  @IsNumber()
   parent_id?: number;
 }

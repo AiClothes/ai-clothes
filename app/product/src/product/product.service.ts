@@ -250,7 +250,8 @@ export class ProductService {
         }
       },
       orderBy: {
-        created_at: 'desc'
+        // created_at: 'desc'
+        sort: 'asc'
       },
       skip: skip,
       take: take
@@ -292,10 +293,13 @@ export class ProductService {
         product_category: true,
         description: true,
         price: true,
-        image: true
+        image: true,
+        sort: true,
+        pay_account: true
       },
       orderBy: {
-        created_at: 'desc'
+        // created_at: 'desc'
+        sort: 'asc'
       }
       // skip: skip,
       // take: take
@@ -388,7 +392,16 @@ export class ProductService {
 
   // 更新的是商品基础信息
   async update(data: UpdateProductDto) {
-    const { name, description, unit, status, category_id, price } = data;
+    const {
+      name,
+      description,
+      unit,
+      status,
+      category_id,
+      price,
+      sort,
+      pay_account
+    } = data;
     const old = await this.findOne(data.id);
     const r = await this.prisma.product.update({
       where: {
@@ -400,7 +413,9 @@ export class ProductService {
         ...(unit ? { unit } : {}),
         ...(status || status === 0 ? { status } : {}),
         ...(category_id ? { category_id } : {}),
-        ...(price || price === 0 ? { price } : {})
+        ...(price || price === 0 ? { price } : {}),
+        ...(sort || sort === 0 ? { sort } : {}),
+        ...(pay_account || pay_account === 0 ? { pay_account } : {})
       }
     });
     this.log.system_operate({

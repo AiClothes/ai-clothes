@@ -108,6 +108,16 @@ export class CreateProductDto {
   @IsInt()
   status?: number;
 
+  // 非必填项
+  @IsOptional()
+  @IsInt()
+  sort?: number;
+
+  // 非必填项
+  @IsOptional()
+  @IsNumber()
+  pay_account?: number;
+
   // 由程序自动处理
   // @IsNotEmpty({ message: 'image is required' })
   // @IsUrl()

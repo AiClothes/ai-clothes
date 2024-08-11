@@ -78,6 +78,10 @@ export class ProductCategoryService {
       },
       include: {
         children: true
+      },
+      orderBy: {
+        // created_at: 'desc'
+        sort: 'asc'
       }
     });
   }

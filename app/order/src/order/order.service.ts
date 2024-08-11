@@ -16,7 +16,7 @@ export class OrderService {
     @Inject(MICROSERVICE.PRODUCT_SERVICE) private productClient: ClientProxy
   ) {}
 
-  create(data: CreateOrderDto) {
+  async create(data: CreateOrderDto) {
     const {
       order_no,
       user_id,
@@ -38,10 +38,11 @@ export class OrderService {
     if (!order_products || order_products.length === 0) {
       throw new Error('下单时必须含有商品！');
     }
+    console.log('order', data);
     // 使用事务 交互式创建商品
-    return this.prisma.$transaction(async (prisma) => {
+    const order_create = await this.prisma.$transaction(async (prisma) => {
       // 创建订单
-      const order = await this.prisma.order.create({
+      const order = await prisma.order.create({
         data: {
           order_no,
           user_id,
@@ -86,7 +87,7 @@ export class OrderService {
       }
       // 保存交易凭证
       const _trades = await Promise.all(
-        trades.map(async (trade) => {
+        (trades || []).map(async (trade) => {
           return prisma.orderTrade.create({
             data: {
               order_id: order.id,
@@ -183,6 +184,8 @@ export class OrderService {
       });
       return r;
     });
+
+    return order_create;
   }
 
   // 查询订单列表
