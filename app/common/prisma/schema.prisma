@@ -19,7 +19,14 @@ datasource db {
 // 小程序配置表
 model MiniProgramConfig {
   id         Int       @id @default(autoincrement())
-  // TODO 待定字段
+  // 小程序公告 标题
+  title      String?
+  // 小程序公告 子标题
+  subtitle   String?
+  // 小程序公告 内容
+  content    String?
+  // 小程序公告 图片
+  image      String?
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
   deleted_at DateTime?

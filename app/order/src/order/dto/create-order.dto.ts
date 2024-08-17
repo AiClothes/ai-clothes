@@ -126,13 +126,18 @@ export class OrderProduct {
   @IsOptional()
   @IsNumber()
   final_total_price?: number;
+
+  // 商品绑定的作品信息
+  @IsOptional()
+  @IsString()
+  work_info?: string;
 }
 
 export class CreateOrderDto {
   // 订单号 前端传入，固定写死
+  // @IsUUID()
   @IsNotEmpty({ message: 'order_no is required' })
   @IsString()
-  // @IsUUID()
   order_no: string;
 
   // 用户ID
@@ -140,10 +145,14 @@ export class CreateOrderDto {
   @IsString()
   user_id: string;
 
+  @IsNotEmpty({ message: 'user_info is required' })
+  @IsString()
+  user_info: string;
+
   // 订单状态 0: 待支付 1: 已支付 2: 已发货 3: 已签收 4: 已取消 5: 已退货 6: 已退款 7: 已退货退款 100: 已完成
-  @IsNotEmpty({ message: 'status is required' })
-  @IsInt()
   @IsOptional()
+  // @IsNotEmpty({ message: 'status is required' })
+  @IsInt()
   status?: number;
 
   // 订单地址

@@ -20,6 +20,7 @@ export class OrderService {
     const {
       order_no,
       user_id,
+      user_info,
       // status,
       address,
       consignee,
@@ -46,6 +47,7 @@ export class OrderService {
         data: {
           order_no,
           user_id,
+          user_info,
           status: trades && trades.length > 0 ? 1 : 0,
           address,
           consignee,
@@ -99,22 +101,24 @@ export class OrderService {
       // 创建订单商品信息
       const _products = await Promise.all(
         order_products.map(async (item) => {
-          const { product_num, product_id } = item;
+          const { product_num, product_id, work_info } = item;
           // 找到对应的产品
           const product = products.find((p) => p.id === product_id);
           const { price, product_specification_combinations } = product;
           const target_psc = product_specification_combinations.find(
             (psc) => psc.id === item.specification_combination_id
           );
+          console.log('target_psc', target_psc);
           if (!target_psc) {
             throw new Error('商品规格信息不正确！');
           }
           if (target_psc.quantity < product_num) {
             throw new Error('商品库存不足！');
           }
-          if (target_psc.status !== 1) {
-            throw new Error('商品规格已下架！');
-          }
+          // 不做校验
+          // if (target_psc.status !== 1) {
+          //   throw new Error('商品规格已下架！');
+          // }
           // 减少库存
           const _qObservable: any = this.productClient.send(
             'update_product_quantity',
@@ -158,7 +162,8 @@ export class OrderService {
                 product_total_price: _price * item.product_num,
                 ...(item.final_total_price
                   ? { final_total_price: item.final_total_price }
-                  : { final_total_price: _price * item.product_num })
+                  : { final_total_price: _price * item.product_num }),
+                work_info: work_info
               }
             });
           } catch (e) {

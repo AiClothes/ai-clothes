@@ -17,6 +17,8 @@ import { CreateProductSpecificationDto } from './dto/create-product-specificatio
 import { UpdateProductSpecificationCombinationDto } from './dto/update-product-specification-combination.dto';
 import { UpdateProductSpecificationDto } from './dto/update-product-specification.dto';
 import { UpdateProductSpecificationValueDto } from './dto/update-product-specification-value.dto';
+import { CreateProductSellImageDto } from './dto/create-product-sell-image.dto';
+import { UpdateProductSellImageDto } from './dto/update-product-sell-image.dto';
 
 @Injectable()
 export class ProductService {
@@ -37,7 +39,8 @@ export class ProductService {
       status,
       product_images = [],
       product_specifications = [],
-      product_specification_combinations = []
+      product_specification_combinations = [],
+      product_sell_long_images = []
     } = data;
     const main_image = product_images.find((item) => item.is_main);
     if (!main_image) {
@@ -74,6 +77,18 @@ export class ProductService {
         })
       );
       console.log('images', images);
+      const sell_long_images = await Promise.all(
+        product_sell_long_images.map(async (item) => {
+          return prisma.productSellLongImage.create({
+            data: {
+              product_id: product.id,
+              url: item.url,
+              sort: item.sort
+            }
+          });
+        })
+      );
+      console.log('sell_long_images', sell_long_images);
       // 创建商品的规格 batch create
       const specifications = await Promise.all(
         product_specifications.map(async (item) => {
@@ -176,6 +191,7 @@ export class ProductService {
       const r = {
         ...product,
         product_images: images,
+        product_sell_long_images: sell_long_images,
         product_specifications: specifications,
         product_specification_combinations: productSpecificationCombinations
       };
@@ -212,6 +228,12 @@ export class ProductService {
           }
         },
         product_images: {
+          // 只查询有的
+          where: {
+            deleted_at: null
+          }
+        },
+        product_sell_long_images: {
           // 只查询有的
           where: {
             deleted_at: null
@@ -350,6 +372,12 @@ export class ProductService {
           }
         },
         product_images: {
+          // 只查询有的
+          where: {
+            deleted_at: null
+          }
+        },
+        product_sell_long_images: {
           // 只查询有的
           where: {
             deleted_at: null
@@ -630,6 +658,123 @@ export class ProductService {
   async removeImage(id: number) {
     const old = await this.findOne(id);
     const r = await this.prisma.productImage.update({
+      where: {
+        id: id
+      },
+      data: {
+        deleted_at: new Date()
+      }
+    });
+    this.log.system_operate({
+      success: true,
+      operate_type: OperateType.DELETE,
+      operate_object_type: OperateObjectType.PRODUCT_IMAGE,
+      operate_object_id: r.id,
+      operate_content: JSON.stringify(old),
+      operate_result: JSON.stringify(r)
+    });
+    return r;
+  }
+
+  // 创建商品销售图片
+  async createSellLongImage(data: CreateProductSellImageDto) {
+    const { product_id, url, sort } = data;
+    const r = await this.prisma.productSellLongImage.create({
+      data: {
+        product_id,
+        url,
+        sort
+      }
+    });
+    this.log.system_operate({
+      success: true,
+      operate_type: OperateType.CREATE,
+      operate_object_type: OperateObjectType.PRODUCT_IMAGE,
+      operate_object_id: r.id,
+      operate_content: '',
+      operate_result: JSON.stringify(r)
+    });
+    return r;
+  }
+
+  // 更新商品销售图片
+  async updateSellLongImage(r: { images: UpdateProductSellImageDto[] }) {
+    // 使用事务 交互式创建商品
+    return this.prisma.$transaction(async (prisma) => {
+      const { images } = r;
+      const results = [];
+      for (let i = 0; i < images.length; i++) {
+        const { id, url, product_id, sort, is_delete = false } = images[i];
+        if (!id) {
+          // 创建新的
+          const r = await prisma.productSellLongImage.create({
+            data: {
+              product_id,
+              url,
+              sort
+            }
+          });
+          this.log.system_operate({
+            success: true,
+            operate_type: OperateType.CREATE,
+            operate_object_type: OperateObjectType.PRODUCT_IMAGE,
+            operate_object_id: r.id,
+            operate_content: '',
+            operate_result: JSON.stringify(r)
+          });
+          results.push(r);
+          continue;
+        }
+
+        const old = await this.findImage(id);
+
+        if (is_delete) {
+          const r = await prisma.productSellLongImage.update({
+            where: {
+              id: id
+            },
+            data: {
+              deleted_at: new Date()
+            }
+          });
+          this.log.system_operate({
+            success: true,
+            operate_type: OperateType.DELETE,
+            operate_object_type: OperateObjectType.PRODUCT_IMAGE,
+            operate_object_id: r.id,
+            operate_content: JSON.stringify(old),
+            operate_result: JSON.stringify(r)
+          });
+          results.push(r);
+          continue;
+        }
+        const r = await prisma.productSellLongImage.update({
+          where: {
+            id: id
+          },
+          data: {
+            ...(url ? { url } : {}),
+            ...(sort || sort === 0 ? { sort } : {})
+          }
+        });
+        this.log.system_operate({
+          success: true,
+          operate_type: OperateType.UPDATE,
+          operate_object_type: OperateObjectType.PRODUCT_IMAGE,
+          operate_object_id: r.id,
+          operate_content: JSON.stringify(old),
+          operate_result: JSON.stringify(r)
+        });
+        results.push(r);
+      }
+    });
+  }
+
+  // 删除商品销售图片
+  // 设置deleted_at时间为真
+  async removeSellLongImage(id: number) {
+    const old = await this.findOne(id);
+    const r = await this.prisma.productSellLongImage.update({
       where: {
         id: id
       },

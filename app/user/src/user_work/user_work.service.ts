@@ -5,6 +5,7 @@ import { OperateObjectType, OperateType } from '@one-server/core';
 import { PrismaService } from '../prisma/prisma.service';
 import { LogService } from '../log/log.service';
 import { QueryUserWorkDto } from './dto/query-user_work.dto';
+import { WorkType } from '../common/enum/WorkType';
 
 @Injectable()
 export class UserWorkService {
@@ -98,12 +99,29 @@ export class UserWorkService {
 
   // findAll全部用来使用分页查询方案
   findAll(query: QueryUserWorkDto) {
-    const { current = 1, page_size = 20 } = query;
+    const {
+      current = 1,
+      page_size = 20,
+      user_id,
+      name,
+      source,
+      create_type
+    } = query;
     const skip = (current - 1) * page_size;
     const take = page_size;
     return this.prisma.userWork.findMany({
       where: {
-        deleted_at: null
+        deleted_at: null,
+        ...(user_id ? { user_id: user_id } : {}),
+        ...(name ? { name: { contains: name } } : {}),
+        ...(source ? { source: source } : {}),
+        ...(create_type
+          ? {
+              create_type: {
+                in: create_type
+              }
+            }
+          : {})
       },
       include: {
         parent: true,
@@ -121,10 +139,20 @@ export class UserWorkService {
 
   // 数量查询
   count(query: QueryUserWorkDto) {
-    const {} = query;
+    const { user_id, name, source, create_type } = query;
     return this.prisma.userWork.count({
       where: {
-        deleted_at: null
+        deleted_at: null,
+        ...(user_id ? { user_id: user_id } : {}),
+        ...(name ? { name: { contains: name } } : {}),
+        ...(source ? { source: source } : {}),
+        ...(create_type
+          ? {
+              create_type: {
+                in: create_type
+              }
+            }
+          : {})
       }
     });
   }
@@ -134,6 +162,28 @@ export class UserWorkService {
     return this.prisma.userWork.findUnique({
       where: {
         id: id
+      },
+      include: {
+        images: true,
+        parent: true,
+        children: true
+      }
+    });
+  }
+
+  // 查询具体日志信息
+  findManyByExt(user_id: number, product_id: number) {
+    // 不是用唯一id查询的内容，需要使用findFirst
+    return this.prisma.userWork.findMany({
+      where: {
+        user_id: user_id,
+        product_id: product_id,
+        source: WorkType.BUILD_PRODUCT
+      },
+      include: {
+        images: true,
+        parent: true,
+        children: true
       }
     });
   }

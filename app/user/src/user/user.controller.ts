@@ -11,6 +11,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { QueryUserDto } from './dto/query-user.dto';
 import { WX } from '@one-server/core';
+import { UpdateFrontUserDto } from './dto/update-front-user.dto';
 
 @Controller('user')
 export class UserController {
@@ -98,6 +99,68 @@ export class UserController {
   async unbindRole(@Body() data: { role_id: number; user_id: number }) {
     try {
       return await this.userService.unbindRole(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  // 查询指定前端用户
+  @Post('find-front-user')
+  async findFrontUser(@Body('id') id: number) {
+    try {
+      return await this.userService.findFrontOne(id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  // 查询前端用户列表
+  @Post('find-front-all')
+  async findFrontAll(@Body() query: QueryUserDto) {
+    try {
+      const count = await this.userService.countFront(query);
+      const list = await this.userService.findFrontAll(query);
+      return {
+        count: count,
+        list: list
+      };
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @Post('update-front-user')
+  async updateFrontUser(
+    @Body() data: UpdateFrontUserDto,
+    @Body('openid') openid: string,
+    @Body('user_id') user_id: number
+  ) {
+    try {
+      return await this.userService.updateFrontUser(user_id, openid, data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @WX()
+  @Post('wx-update-front-user')
+  async wxUpdateUser(@Body() data: UpdateFrontUserDto, @Request() req) {
+    try {
+      const { user } = req;
+      const { user_id, openid, ...reset } = user;
+      return await this.userService.updateFrontUser(user_id, openid, data);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

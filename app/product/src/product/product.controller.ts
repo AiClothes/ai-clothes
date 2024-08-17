@@ -19,6 +19,8 @@ import { UpdateProductSpecificationDto } from './dto/update-product-specificatio
 import { UpdateProductSpecificationValueDto } from './dto/update-product-specification-value.dto';
 import { MessagePattern } from '@nestjs/microservices';
 import { OFF_JWT, WX } from '@one-server/core';
+import { CreateProductSellImageDto } from './dto/create-product-sell-image.dto';
+import { UpdateProductSellImageDto } from './dto/update-product-sell-image.dto';
 
 @Controller('product')
 export class ProductController {
@@ -159,6 +161,45 @@ export class ProductController {
   async removeImage(@Body('id') id: number) {
     try {
       return await this.productService.removeImage(id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  // 创建商品销售图片
+  @Post('create-sell-image')
+  async createSellImage(@Body() data: CreateProductSellImageDto) {
+    try {
+      return await this.productService.createSellLongImage(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  // 更新商品销售图片
+  @Post('update-sell-image')
+  async updateSellImage(@Body() data: { images: UpdateProductSellImageDto[] }) {
+    try {
+      return await this.productService.updateSellLongImage(data);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  // 删除销售图片
+  @Post('delete-sell-image')
+  async removeSellImage(@Body('id') id: number) {
+    try {
+      return await this.productService.removeSellLongImage(id);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

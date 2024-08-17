@@ -13,7 +13,7 @@ import { QueryCommonDto } from './dto/query-common.dto';
 import { UploadFileDto } from './dto/upload-file.dto';
 import { GeneralSegmentDto } from './dto/general-segment.dto';
 import { AIDrawDto } from './dto/ai-draw.dto';
-import { WX } from '@one-server/core';
+import { OFF_JWT, WX } from '@one-server/core';
 
 @Controller('common')
 export class CommonController {
@@ -59,6 +59,20 @@ export class CommonController {
 
   @Post('find-one')
   async findOne(@Body('id') id: number) {
+    try {
+      return await this.commonService.findOne(id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  // @WX()
+  @OFF_JWT()
+  @Post('find-one-wx')
+  async wxFindOne(@Body('id') id: number) {
     try {
       return await this.commonService.findOne(id);
     } catch (e) {

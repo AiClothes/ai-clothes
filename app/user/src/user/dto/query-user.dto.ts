@@ -5,4 +5,5 @@ export class QueryUserDto {
 
   email?: string;
   phone?: string;
+  nickname?: string;
 }

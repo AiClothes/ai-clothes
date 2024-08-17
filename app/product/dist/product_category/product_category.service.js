@@ -71,6 +71,9 @@ let ProductCategoryService = class ProductCategoryService {
             },
             include: {
                 children: true
+            },
+            orderBy: {
+                sort: 'asc'
             }
         });
     }

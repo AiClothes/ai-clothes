@@ -74,6 +74,9 @@ model Product {
   image          String
   product_images ProductImage[]
 
+  // 商品的维护长图列表
+  product_sell_long_images ProductSellLongImage[]
+
   // 商品分类
   category_id      Int
   product_category ProductCategory @relation(fields: [category_id], references: [id])
@@ -110,6 +113,27 @@ model ProductImage {
   deleted_at DateTime?
 
   @@map("product_images")
+}
+
+// 商品的维护长图列表
+model ProductSellLongImage {
+  id Int @id @default(autoincrement())
+
+  // 商品图片
+  url  String
+  // 排序，用于界面上使用
+  sort Int
+
+  // 商品id
+  product_id Int
+  // 商品信息
+  product    Product @relation(fields: [product_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("product_sell_long_images")
 }
 
 // 商品规格表

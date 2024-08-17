@@ -10,6 +10,7 @@ export declare class ProductCategoryService {
     create(data: CreateProductCategoryDto): Promise<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -19,6 +20,7 @@ export declare class ProductCategoryService {
         parent: {
             id: number;
             name: string;
+            sort: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -27,6 +29,7 @@ export declare class ProductCategoryService {
         children: {
             id: number;
             name: string;
+            sort: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -35,6 +38,7 @@ export declare class ProductCategoryService {
     } & {
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -45,6 +49,7 @@ export declare class ProductCategoryService {
         children: {
             id: number;
             name: string;
+            sort: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -53,6 +58,7 @@ export declare class ProductCategoryService {
     } & {
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -61,6 +67,7 @@ export declare class ProductCategoryService {
     findOne(id: number): import(".prisma/client").Prisma.Prisma__ProductCategoryClient<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -69,6 +76,7 @@ export declare class ProductCategoryService {
     update(data: UpdateProductCategoryDto): Promise<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -77,6 +85,7 @@ export declare class ProductCategoryService {
     remove(id: number): Promise<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;

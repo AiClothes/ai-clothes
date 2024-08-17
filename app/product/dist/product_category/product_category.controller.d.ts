@@ -8,6 +8,7 @@ export declare class ProductCategoryController {
     create(data: CreateProductCategoryDto): Promise<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -19,6 +20,7 @@ export declare class ProductCategoryController {
             parent: {
                 id: number;
                 name: string;
+                sort: number;
                 parent_id: number;
                 created_at: Date;
                 updated_at: Date;
@@ -27,6 +29,7 @@ export declare class ProductCategoryController {
             children: {
                 id: number;
                 name: string;
+                sort: number;
                 parent_id: number;
                 created_at: Date;
                 updated_at: Date;
@@ -35,6 +38,7 @@ export declare class ProductCategoryController {
         } & {
             id: number;
             name: string;
+            sort: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -45,6 +49,7 @@ export declare class ProductCategoryController {
         children: {
             id: number;
             name: string;
+            sort: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -53,6 +58,7 @@ export declare class ProductCategoryController {
     } & {
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -61,6 +67,7 @@ export declare class ProductCategoryController {
     findOne(id: number): Promise<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -69,6 +76,7 @@ export declare class ProductCategoryController {
     update(data: UpdateProductCategoryDto): Promise<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -77,6 +85,7 @@ export declare class ProductCategoryController {
     remove(id: number): Promise<{
         id: number;
         name: string;
+        sort: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -88,6 +97,7 @@ export declare class ProductCategoryController {
             parent: {
                 id: number;
                 name: string;
+                sort: number;
                 parent_id: number;
                 created_at: Date;
                 updated_at: Date;
@@ -96,6 +106,7 @@ export declare class ProductCategoryController {
             children: {
                 id: number;
                 name: string;
+                sort: number;
                 parent_id: number;
                 created_at: Date;
                 updated_at: Date;
@@ -104,6 +115,7 @@ export declare class ProductCategoryController {
         } & {
             id: number;
             name: string;
+            sort: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;

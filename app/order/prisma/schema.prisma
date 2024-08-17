@@ -58,6 +58,8 @@ model Order {
   order_no        String @unique
   // 用户ID
   user_id         String
+  // 用户信息
+  user_info       String @db.Text
   // 订单状态 0: 待支付 1: 已支付 2: 已发货 3: 已签收 4: 已取消 5: 已退货 6: 已退款 7: 已退货退款 100: 已完成
   status          Int
   // 订单地址
@@ -161,6 +163,9 @@ model OrderProduct {
   product_num       Int
   // 商品最终总价格 可能会有折扣/改价等操作
   final_total_price Float
+
+  // 作品信息[可以没有，没有就是不存在作品的东西]
+  work_info String? @db.Text
 
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt

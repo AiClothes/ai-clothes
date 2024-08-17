@@ -84,6 +84,21 @@ export class UserWorkController {
     }
   }
 
+  @Post('find-one-width-ext')
+  async findOneByUserId(
+    @Body('user_id') user_id: number,
+    @Body('product_id') product_id: number
+  ) {
+    try {
+      return await this.userWorkService.findManyByExt(user_id, product_id);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
   @WX()
   @Post('update')
   async update(@Body() data: UpdateUserWorkDto) {

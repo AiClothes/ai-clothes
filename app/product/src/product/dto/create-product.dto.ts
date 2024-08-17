@@ -21,6 +21,16 @@ export class ProductImage {
   is_main: boolean;
 }
 
+export class ProductSellLongImage {
+  @IsNotEmpty({ message: 'url is required' })
+  @IsUrl()
+  url: string;
+
+  @IsNotEmpty({ message: 'sort is required' })
+  @IsInt()
+  sort: number;
+}
+
 // 商品规格值
 export class ProductSpecificationValue {
   @IsNotEmpty({ message: 'value is required' })
@@ -127,6 +137,10 @@ export class CreateProductDto {
   @IsArray()
   @ArrayMinSize(1, { message: 'At least one product_images is required' })
   product_images: ProductImage[];
+
+  @IsArray()
+  @IsOptional()
+  product_sell_long_images?: ProductSellLongImage[];
 
   // 非必填项
   @IsOptional()

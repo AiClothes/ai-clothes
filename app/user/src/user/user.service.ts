@@ -5,6 +5,7 @@ import { QueryUserDto } from './dto/query-user.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { LogService } from '../log/log.service';
 import { ErrorInfo, OperateObjectType, OperateType } from '@one-server/core';
+import { UpdateFrontUserDto } from './dto/update-front-user.dto';
 
 @Injectable()
 export class UserService {
@@ -299,6 +300,15 @@ export class UserService {
     throw new Error(ErrorInfo.UPDATE);
   }
 
+  // 后台用的api
+  async findFrontOne(id: number) {
+    return this.prisma.frontUser.findUnique({
+      where: {
+        id: id
+      }
+    });
+  }
+
   async findWXOne(id: number, openid: string) {
     return this.prisma.frontUser.findUnique({
       where: {
@@ -315,5 +325,82 @@ export class UserService {
         phone: true
       }
     });
+  }
+
+  async countFront(query: QueryUserDto) {
+    const { nickname } = query;
+    return this.prisma.frontUser.count({
+      where: {
+        ...(nickname
+          ? {
+              nickname: {
+                contains: nickname
+              }
+            }
+          : {}) // 如果phone存在则加入查询条件
+      }
+    });
+  }
+
+  async findFrontAll(query: QueryUserDto) {
+    const { current = 1, page_size = 20, nickname } = query;
+    const skip = (current - 1) * page_size;
+    const take = page_size;
+    return this.prisma.frontUser.findMany({
+      where: {
+        ...(nickname
+          ? {
+              nickname: {
+                contains: nickname
+              }
+            }
+          : {}) // 如果phone存在则加入查询条件
+      },
+      orderBy: {
+        created_at: 'desc'
+      },
+      skip: skip,
+      take: take
+    });
+  }
+
+  async updateFrontUser(
+    user_id: number,
+    openid: string,
+    data: UpdateFrontUserDto
+  ) {
+    const old = await this.findFrontOne(user_id);
+    const { avatar, address, phone, nickname } = data;
+    const r = await this.prisma.frontUser
+      .update({
+        where: {
+          id: user_id
+          // openid: openid,
+        },
+        data: {
+          ...(avatar ? { avatar } : {}),
+          ...(address ? { address } : {}),
+          ...(phone ? { phone } : {}),
+          ...(nickname ? { nickname } : {})
+        }
+      })
+      .catch((e) => {
+        console.log(
+          `${new Date().toLocaleDateString()} [UserService][updateFrontUser] e:`,
+          e.message
+        );
+      });
+    if (r) {
+      this.log.system_operate({
+        success: true,
+        operate_type: OperateType.UPDATE,
+        operate_object_type: OperateObjectType.FRONT_USER,
+        operate_object_id: r.id,
+        operate_content: JSON.stringify(old),
+        operate_result: JSON.stringify(r)
+      });
+      return r;
+    }
+    throw new Error(ErrorInfo.UPDATE);
   }
 }
