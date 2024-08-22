@@ -7,4 +7,5 @@ export class QueryProductCategoryDto {
 
   name?: string;
   parent_id?: number;
+  is_virtual_goods?: number[];
 }

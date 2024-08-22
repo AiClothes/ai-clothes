@@ -36,12 +36,15 @@ let ProductCategoryService = class ProductCategoryService {
         return r;
     }
     findAll(query) {
-        const { current = 1, page_size = 20, name, parent_id } = query;
+        const { current = 1, page_size = 20, name, parent_id, is_virtual_goods = [0] } = query;
         return this.prisma.productCategory.findMany({
             where: {
                 deleted_at: null,
                 name: {
                     contains: name
+                },
+                is_virtual_goods: {
+                    in: is_virtual_goods
                 },
                 ...(parent_id ? { parent_id: parent_id } : {})
             },
@@ -52,12 +55,15 @@ let ProductCategoryService = class ProductCategoryService {
         });
     }
     count(query) {
-        const { name, parent_id } = query;
+        const { name, parent_id, is_virtual_goods = [0] } = query;
         return this.prisma.productCategory.count({
             where: {
                 deleted_at: null,
                 name: {
                     contains: name
+                },
+                is_virtual_goods: {
+                    in: is_virtual_goods
                 },
                 ...(parent_id ? { parent_id: parent_id } : {})
             }

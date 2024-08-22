@@ -24,6 +24,7 @@ import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
 import { AuthModule } from './auth/auth.module';
 import { UserWorkModule } from './user_work/user_work.module';
+import { SecretKeyModule } from './secret_key/secret_key.module';
 
 @Module({
   imports: [
@@ -43,7 +44,8 @@ import { UserWorkModule } from './user_work/user_work.module';
     PermissionModule,
     UserModule,
     RoleModule,
-    UserWorkModule
+    UserWorkModule,
+    SecretKeyModule
   ],
   controllers: [AppController],
   providers: [

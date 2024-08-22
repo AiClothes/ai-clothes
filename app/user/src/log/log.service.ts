@@ -21,7 +21,7 @@ export class LogService {
       operate_result
     } = data;
     const request = this.requestContextService.getRequest();
-    const { ip, method, url, user } = request;
+    const { ip, method, url, user } = request || {};
     console.log('system_operate', ip, method, url, user, JSON.stringify(data));
     this.logClient.emit('system_operate_log_created', {
       operate_user: 1,

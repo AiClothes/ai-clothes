@@ -34,4 +34,8 @@ export class CreateProductCategoryDto {
   @IsOptional()
   @IsNumber()
   parent_id?: number;
+
+  @IsOptional()
+  @IsNumber()
+  is_virtual_goods?: number;
 }

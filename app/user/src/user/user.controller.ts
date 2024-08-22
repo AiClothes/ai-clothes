@@ -12,6 +12,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { QueryUserDto } from './dto/query-user.dto';
 import { WX } from '@one-server/core';
 import { UpdateFrontUserDto } from './dto/update-front-user.dto';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Controller('user')
 export class UserController {
@@ -176,6 +177,20 @@ export class UserController {
       const { user } = req;
       const { user_id, openid, ...reset } = user;
       return await this.userService.findWXOne(user_id, openid);
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
+  @MessagePattern('update_user_gold')
+  async updateUserGold_message(data: UpdateFrontUserDto & { user_id: number }) {
+    try {
+      const { user_id } = data;
+      console.log('update_user_gold', data);
+      return await this.userService.updateFrontUser(user_id, '', data);
     } catch (e) {
       throw new HttpException(
         { message: e.message, errors: e },

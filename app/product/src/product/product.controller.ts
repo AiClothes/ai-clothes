@@ -290,8 +290,14 @@ export class ProductController {
         ...(query.category_id ? { category_id: query.category_id } : {}),
         status: 1
       };
-      const count = await this.productService.count(_query);
-      const list = await this.productService.findSimpleAll(_query);
+      const count = await this.productService.count({
+        ..._query,
+        is_virtual_goods: [0]
+      });
+      const list = await this.productService.findSimpleAll({
+        ..._query,
+        is_virtual_goods: [0]
+      });
       return { count, list };
     } catch (e) {
       throw new HttpException(
@@ -312,8 +318,14 @@ export class ProductController {
         ...(query.category_id ? { category_id: query.category_id } : {}),
         status: 1
       };
-      const count = await this.productService.count(_query);
-      const list = await this.productService.findSimpleAll(_query);
+      const count = await this.productService.count({
+        ..._query,
+        is_virtual_goods: [0]
+      });
+      const list = await this.productService.findSimpleAll({
+        ..._query,
+        is_virtual_goods: [0]
+      });
       return { count, list };
     } catch (e) {
       throw new HttpException(

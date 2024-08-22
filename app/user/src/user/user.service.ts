@@ -322,7 +322,8 @@ export class UserService {
         nickname: true,
         avatar: true,
         created_at: true,
-        phone: true
+        phone: true,
+        gold: true
       }
     });
   }
@@ -370,7 +371,9 @@ export class UserService {
     data: UpdateFrontUserDto
   ) {
     const old = await this.findFrontOne(user_id);
-    const { avatar, address, phone, nickname } = data;
+    const { avatar, address, phone, nickname, gold } = data;
+    console.log('old', old);
+    const { gold: old_gold } = old;
     const r = await this.prisma.frontUser
       .update({
         where: {
@@ -381,7 +384,8 @@ export class UserService {
           ...(avatar ? { avatar } : {}),
           ...(address ? { address } : {}),
           ...(phone ? { phone } : {}),
-          ...(nickname ? { nickname } : {})
+          ...(nickname ? { nickname } : {}),
+          ...(gold ? { gold: gold + (old_gold || 0) } : {})
         }
       })
       .catch((e) => {

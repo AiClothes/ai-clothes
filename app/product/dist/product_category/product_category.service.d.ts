@@ -11,6 +11,7 @@ export declare class ProductCategoryService {
         id: number;
         name: string;
         sort: number;
+        is_virtual_goods: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -21,6 +22,7 @@ export declare class ProductCategoryService {
             id: number;
             name: string;
             sort: number;
+            is_virtual_goods: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -30,6 +32,7 @@ export declare class ProductCategoryService {
             id: number;
             name: string;
             sort: number;
+            is_virtual_goods: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -39,6 +42,7 @@ export declare class ProductCategoryService {
         id: number;
         name: string;
         sort: number;
+        is_virtual_goods: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -50,6 +54,7 @@ export declare class ProductCategoryService {
             id: number;
             name: string;
             sort: number;
+            is_virtual_goods: number;
             parent_id: number;
             created_at: Date;
             updated_at: Date;
@@ -59,6 +64,7 @@ export declare class ProductCategoryService {
         id: number;
         name: string;
         sort: number;
+        is_virtual_goods: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -68,6 +74,7 @@ export declare class ProductCategoryService {
         id: number;
         name: string;
         sort: number;
+        is_virtual_goods: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -77,6 +84,7 @@ export declare class ProductCategoryService {
         id: number;
         name: string;
         sort: number;
+        is_virtual_goods: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;
@@ -86,6 +94,7 @@ export declare class ProductCategoryService {
         id: number;
         name: string;
         sort: number;
+        is_virtual_goods: number;
         parent_id: number;
         created_at: Date;
         updated_at: Date;

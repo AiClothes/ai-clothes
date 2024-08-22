@@ -1,4 +1,4 @@
-import { Injectable, Request } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateUserWorkDto } from './dto/create-user_work.dto';
 import { UpdateUserWorkDto } from './dto/update-user_work.dto';
 import { OperateObjectType, OperateType } from '@one-server/core';
@@ -6,6 +6,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { LogService } from '../log/log.service';
 import { QueryUserWorkDto } from './dto/query-user_work.dto';
 import { WorkType } from '../common/enum/WorkType';
+import { WorkCreateType } from '../common/enum/WorkCreateType';
 
 @Injectable()
 export class UserWorkService {
@@ -53,13 +54,30 @@ export class UserWorkService {
           : {})
       }
     });
-    this.log.system_operate({
-      success: true,
-      operate_type: OperateType.CREATE,
-      operate_object_type: OperateObjectType.USER_WORK,
-      operate_object_id: r.id,
-      operate_content: '',
-      operate_result: JSON.stringify(r)
+    // 删除金币
+    const user = await this.prisma.frontUser.findUnique({
+      where: {
+        id: user_id
+      }
+    });
+    let desc = 0;
+    if (create_type === WorkCreateType.PHOTOSHOP && source === WorkType.BUILD) {
+      desc = 5;
+    }
+    if (
+      create_type === WorkCreateType.CREATE_BY_TEXT &&
+      source === WorkType.BUILD_PRODUCT
+    ) {
+      desc = 10;
+    }
+    // 金币消耗
+    await this.prisma.frontUser.update({
+      where: {
+        id: user_id
+      },
+      data: {
+        gold: user.gold - desc
+      }
     });
     return r;
   }

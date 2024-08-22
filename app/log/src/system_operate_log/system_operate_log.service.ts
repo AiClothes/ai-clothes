@@ -9,11 +9,14 @@ export class SystemOperateLogService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: CreateSystemOperateLogDto) {
-    return this.prisma.systemOperateLog.create({
-      data: {
-        ...data
-      }
-    });
+    // return this.prisma.systemOperateLog.create({
+    //   data: {
+    //     ...data
+    //   }
+    // });
+    // 日志暂时不用了，在哪里用，在哪里记录就行了
+    // 日志一般是最后呈现需要才会去记录的操作，看一下真正的日志应该是如何记录的
+    return true;
   }
 
   // findAll全部用来使用分页查询方案

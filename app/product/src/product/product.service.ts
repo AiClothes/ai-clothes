@@ -282,21 +282,33 @@ export class ProductService {
 
   // 数量查询
   async count(query: QueryProductDto) {
-    const { name, status } = query;
+    const { name, status, is_virtual_goods = [0, 1] } = query;
     return this.prisma.product.count({
       where: {
         deleted_at: null,
         name: {
           contains: name
         },
-        ...(status ? { status } : {})
+        ...(status ? { status } : {}),
+        product_category: {
+          is_virtual_goods: {
+            in: is_virtual_goods
+          }
+        }
       }
     });
   }
 
   // 查询商品列表 [简单]
   async findSimpleAll(query: QueryProductDto) {
-    const { current = 1, page_size = 10, name, status, category_id } = query;
+    const {
+      current = 1,
+      page_size = 10,
+      name,
+      status,
+      category_id,
+      is_virtual_goods = [0, 1]
+    } = query;
     // const skip = (current - 1) * page_size;
     // const take = page_size;
     return this.prisma.product.findMany({
@@ -306,7 +318,12 @@ export class ProductService {
           contains: name
         },
         ...(status ? { status } : {}),
-        ...(category_id ? { category_id } : {})
+        ...(category_id ? { category_id } : {}),
+        product_category: {
+          is_virtual_goods: {
+            in: is_virtual_goods
+          }
+        }
       },
       select: {
         id: true,

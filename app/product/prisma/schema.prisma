@@ -34,6 +34,9 @@ model ProductCategory {
   // 分类排序
   sort Int    @default(0)
 
+  // 是否是虚拟商品
+  is_virtual_goods Int @default(0)
+
   // 多级分类
   parent_id Int?
   parent    ProductCategory?  @relation("ParentChild", fields: [parent_id], references: [id])

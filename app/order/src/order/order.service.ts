@@ -13,7 +13,8 @@ export class OrderService {
   constructor(
     private prisma: PrismaService,
     private log: LogService,
-    @Inject(MICROSERVICE.PRODUCT_SERVICE) private productClient: ClientProxy
+    @Inject(MICROSERVICE.PRODUCT_SERVICE) private productClient: ClientProxy,
+    @Inject(MICROSERVICE.USER_SERVICE) private userClient: ClientProxy
   ) {}
 
   async create(data: CreateOrderDto) {
@@ -38,6 +39,15 @@ export class OrderService {
     } = data;
     if (!order_products || order_products.length === 0) {
       throw new Error('下单时必须含有商品！');
+    }
+    let _real_user_info = null;
+    try {
+      _real_user_info = JSON.parse(user_info);
+    } catch (e) {
+      throw new Error('用户信息不存在！');
+    }
+    if (!_real_user_info || !_real_user_info.id) {
+      throw new Error('用户信息不存在!!!');
     }
     console.log('order', data);
     // 使用事务 交互式创建商品
@@ -140,6 +150,23 @@ export class OrderService {
           const _price = psc_price || price;
           console.log('target_psc', target_psc);
           console.log('_price', _price);
+
+          // 如果是金币，则给用户加金币
+          if (product_id === 3) {
+            console.log('确实是金币更新', _price * item.product_num);
+            // 给用户添加金币
+            const uug: any = this.userClient.send('update_user_gold', {
+              user_id: _real_user_info.id,
+              // 10 为了放大10倍 1:1000
+              gold: _price * item.product_num * 10
+            });
+            const _q: any = await lastValueFrom(uug);
+            console.log('_q', _q);
+            if (!uug) {
+              throw new Error('用户金币更新失败！');
+            }
+          }
+
           try {
             return prisma.orderProduct.create({
               data: {

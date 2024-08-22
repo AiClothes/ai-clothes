@@ -17,6 +17,7 @@ async function main() {
       { name: '订单管理', type: PermissionType.MENU },
       { name: '商品管理', type: PermissionType.MENU },
       { name: '作品管理', type: PermissionType.MENU },
+      { name: '秘钥管理', type: PermissionType.MENU },
       { name: 'AI绘图管理', type: PermissionType.MENU },
       { name: '数据看板', type: PermissionType.MENU },
       { name: '客户管理', type: PermissionType.MENU }

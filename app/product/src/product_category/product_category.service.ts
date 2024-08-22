@@ -32,7 +32,13 @@ export class ProductCategoryService {
 
   // findAll全部用来使用分页查询方案
   findAll(query: QueryProductCategoryDto) {
-    const { current = 1, page_size = 20, name, parent_id } = query;
+    const {
+      current = 1,
+      page_size = 20,
+      name,
+      parent_id,
+      is_virtual_goods = [0]
+    } = query;
     // 初期分类不需要设置分页
     // const skip = (current - 1) * page_size;
     // const take = page_size;
@@ -41,6 +47,9 @@ export class ProductCategoryService {
         deleted_at: null,
         name: {
           contains: name
+        },
+        is_virtual_goods: {
+          in: is_virtual_goods
         },
         ...(parent_id ? { parent_id: parent_id } : {})
       },
@@ -58,12 +67,16 @@ export class ProductCategoryService {
 
   // 数量查询
   count(query: QueryProductCategoryDto) {
-    const { name, parent_id } = query;
+    const { name, parent_id, is_virtual_goods = [0] } = query;
     return this.prisma.productCategory.count({
       where: {
         deleted_at: null,
         name: {
           contains: name
+        },
+        // 输出商品种类的数据
+        is_virtual_goods: {
+          in: is_virtual_goods
         },
         ...(parent_id ? { parent_id: parent_id } : {})
       }

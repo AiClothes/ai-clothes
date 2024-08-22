@@ -128,12 +128,17 @@ model FrontUser {
   // 用户状态[0:拉黑 1:正常]
   status Int @default(1)
 
+  // 用户金币[调用API后扣除]
+  gold Int @default(0)
+
   // 用户作品
   works UserWork[]
 
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
   deleted_at DateTime?
+
+  transactions Transaction[]
 
   @@index([openid])
   @@map("front_users")
@@ -234,4 +239,36 @@ model UserWorkImages {
   deleted_at DateTime?
 
   @@map("user_work_images")
+}
+
+model SecretKey {
+  id       Int     @id @default(autoincrement())
+  key      String  @unique
+  gold     Int
+  consumed Boolean @default(false) // 标记是否已被消费
+
+  Transaction Transaction[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@index([key])
+  @@map("secret_keys")
+}
+
+model Transaction {
+  id            Int       @id @default(autoincrement())
+  user_id       Int
+  user          FrontUser @relation(fields: [user_id], references: [id])
+  secret_key_id Int
+  secret_key    SecretKey @relation(fields: [secret_key_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@index([user_id])
+  @@index([secret_key_id])
+  @@map("transactions")
 }

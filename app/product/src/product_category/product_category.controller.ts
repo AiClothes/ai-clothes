@@ -32,8 +32,14 @@ export class ProductCategoryController {
   @Post('find-all')
   async findAll(@Body() query: QueryProductCategoryDto) {
     try {
-      const count = await this.productCategoryService.count(query);
-      const list = await this.productCategoryService.findAll(query);
+      const count = await this.productCategoryService.count({
+        is_virtual_goods: [0, 1],
+        ...query
+      });
+      const list = await this.productCategoryService.findAll({
+        is_virtual_goods: [0, 1],
+        ...query
+      });
       return { count, list };
     } catch (e) {
       throw new HttpException(

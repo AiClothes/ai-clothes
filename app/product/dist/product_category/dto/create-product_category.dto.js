@@ -29,4 +29,9 @@ __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateProductCategoryDto.prototype, "parent_id", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
+], CreateProductCategoryDto.prototype, "is_virtual_goods", void 0);
 //# sourceMappingURL=create-product_category.dto.js.map

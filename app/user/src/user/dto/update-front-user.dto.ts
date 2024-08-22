@@ -7,4 +7,5 @@ export class UpdateFrontUserDto extends PartialType(CreateUserDto) {
   address?: string;
   phone?: string;
   nickname?: string;
+  gold?: number;
 }

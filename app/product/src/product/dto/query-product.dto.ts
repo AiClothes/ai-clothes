@@ -27,4 +27,8 @@ export class QueryProductDto {
   @IsOptional()
   @IsNumber()
   category_id?: number;
+
+  @IsOptional()
+  @IsNumber()
+  is_virtual_goods?: number[];
 }
