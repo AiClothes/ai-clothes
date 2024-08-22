@@ -19,6 +19,7 @@ import { UpdateProductSpecificationDto } from './dto/update-product-specificatio
 import { UpdateProductSpecificationValueDto } from './dto/update-product-specification-value.dto';
 import { CreateProductSellImageDto } from './dto/create-product-sell-image.dto';
 import { UpdateProductSellImageDto } from './dto/update-product-sell-image.dto';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProductService {
@@ -47,165 +48,173 @@ export class ProductService {
       throw new Error('主页图不能为空');
     }
     // 使用事务 交互式创建商品
-    return this.prisma.$transaction(async (prisma) => {
-      // 创建商品
-      const product = await prisma.product.create({
-        data: {
-          category_id,
-          name,
-          price,
-          // 没有产品属性的，则在这里填写数量
-          ...(quantity ? { quantity } : {}),
-          description,
-          unit,
-          // 商品状态 0: 下架 1: 上架 默认下架=未上架
-          status: status ? status : 0,
-          image: main_image?.url || ''
-        }
-      });
-      console.log('product', product);
-      // 创建商品图片
-      const images = await Promise.all(
-        product_images.map(async (item) => {
-          return prisma.productImage.create({
-            data: {
-              product_id: product.id,
-              url: item.url,
-              is_main: item.is_main
-            }
-          });
-        })
-      );
-      console.log('images', images);
-      const sell_long_images = await Promise.all(
-        product_sell_long_images.map(async (item) => {
-          return prisma.productSellLongImage.create({
-            data: {
-              product_id: product.id,
-              url: item.url,
-              sort: item.sort
-            }
-          });
-        })
-      );
-      console.log('sell_long_images', sell_long_images);
-      // 创建商品的规格 batch create
-      const specifications = await Promise.all(
-        product_specifications.map(async (item) => {
-          // 创建商品规格
-          const productSpecification = await prisma.productSpecification.create(
-            {
+    return this.prisma.$transaction(
+      async (prisma) => {
+        // 创建商品
+        const product = await prisma.product.create({
+          data: {
+            category_id,
+            name,
+            price,
+            // 没有产品属性的，则在这里填写数量
+            ...(quantity ? { quantity } : {}),
+            description,
+            unit,
+            // 商品状态 0: 下架 1: 上架 默认下架=未上架
+            status: status ? status : 0,
+            image: main_image?.url || ''
+          }
+        });
+        console.log('product', product);
+        // 创建商品图片
+        const images = await Promise.all(
+          product_images.map(async (item) => {
+            return prisma.productImage.create({
               data: {
                 product_id: product.id,
-                name: item.name
-              }
-            }
-          );
-          console.log('productSpecification', productSpecification);
-          // 创建商品规格值
-          const product_specification_values = await Promise.all(
-            item.product_specification_values.map(async (value) => {
-              return prisma.productSpecificationValue.create({
-                data: {
-                  specification_id: productSpecification.id,
-                  value: value.value
-                }
-              });
-            })
-          );
-          console.log(
-            'product_specification_values',
-            product_specification_values
-          );
-          return {
-            ...productSpecification,
-            product_specification_values: product_specification_values
-          };
-        })
-      );
-      console.log('specifications', specifications);
-      // 创建商品规格组合
-      const _combineSpecifications = combineSpecifications(specifications);
-      console.log('_combineSpecifications', _combineSpecifications);
-      const productSpecificationCombinations = await Promise.all(
-        _combineSpecifications.map(async (item) => {
-          const specification_value_ids = item.map(
-            (value) => value.specification_value_id
-          );
-          const specification_value_values = item.map((value) => value.value);
-          // 查找当前组合是否已经存在外部的设定内，用来获取用户设定的数量
-          const current_combine = product_specification_combinations.find(
-            (value) =>
-              value.specification_values.sort().join(',') ===
-              specification_value_values.sort().join(',')
-          );
-          const productSpecificationCombination =
-            await prisma.productSpecificationCombination.create({
-              data: {
-                product_id: product.id,
-                specification_value_ids: specification_value_ids.join(','),
-                quantity: current_combine?.quantity || 0,
-                image: current_combine?.image,
-                draw_image: current_combine?.draw_image,
-                draw_image_back: current_combine?.draw_image_back,
-                price: current_combine?.price
+                url: item.url,
+                is_main: item.is_main
               }
             });
-          console.log(
-            'productSpecificationCombination',
-            productSpecificationCombination
-          );
-          return {
-            ...productSpecificationCombination,
-            specification_value_ids
-          };
-        })
-      );
-      console.log(
-        'productSpecificationCombinations',
-        productSpecificationCombinations
-      );
-      // 创建商品组合详情
-      const productSpecificationCombinationDetails = await Promise.all(
-        productSpecificationCombinations.map(async (item) => {
-          const product_specification_combination_details = await Promise.all(
-            item.specification_value_ids.map(async (specification_value_id) => {
-              return prisma.productSpecificationCombinationDetail.create({
+          })
+        );
+        console.log('images', images);
+        const sell_long_images = await Promise.all(
+          product_sell_long_images.map(async (item) => {
+            return prisma.productSellLongImage.create({
+              data: {
+                product_id: product.id,
+                url: item.url,
+                sort: item.sort
+              }
+            });
+          })
+        );
+        console.log('sell_long_images', sell_long_images);
+        // 创建商品的规格 batch create
+        const specifications = await Promise.all(
+          product_specifications.map(async (item) => {
+            // 创建商品规格
+            const productSpecification =
+              await prisma.productSpecification.create({
                 data: {
-                  combination_id: item.id,
-                  specification_value_id: specification_value_id
+                  product_id: product.id,
+                  name: item.name
                 }
               });
-            })
-          );
-          return {
-            ...item,
-            product_specification_combination_details
-          };
-        })
-      );
-      console.log(
-        'productSpecificationCombinationDetails',
-        productSpecificationCombinationDetails
-      );
-      const r = {
-        ...product,
-        product_images: images,
-        product_sell_long_images: sell_long_images,
-        product_specifications: specifications,
-        product_specification_combinations: productSpecificationCombinations
-      };
-      // 记录日志
-      this.log.system_operate({
-        success: true,
-        operate_type: OperateType.CREATE,
-        operate_object_type: OperateObjectType.PRODUCT,
-        operate_object_id: r.id,
-        operate_content: '',
-        operate_result: JSON.stringify(r)
-      });
-      return r;
-    });
+            console.log('productSpecification', productSpecification);
+            // 创建商品规格值
+            const product_specification_values = await Promise.all(
+              item.product_specification_values.map(async (value) => {
+                return prisma.productSpecificationValue.create({
+                  data: {
+                    specification_id: productSpecification.id,
+                    value: value.value
+                  }
+                });
+              })
+            );
+            console.log(
+              'product_specification_values',
+              product_specification_values
+            );
+            return {
+              ...productSpecification,
+              product_specification_values: product_specification_values
+            };
+          })
+        );
+        console.log('specifications', specifications);
+        // 创建商品规格组合
+        const _combineSpecifications = combineSpecifications(specifications);
+        console.log('_combineSpecifications', _combineSpecifications);
+        const productSpecificationCombinations = await Promise.all(
+          _combineSpecifications.map(async (item) => {
+            const specification_value_ids = item.map(
+              (value) => value.specification_value_id
+            );
+            const specification_value_values = item.map((value) => value.value);
+            // 查找当前组合是否已经存在外部的设定内，用来获取用户设定的数量
+            const current_combine = product_specification_combinations.find(
+              (value) =>
+                value.specification_values.sort().join(',') ===
+                specification_value_values.sort().join(',')
+            );
+            const productSpecificationCombination =
+              await prisma.productSpecificationCombination.create({
+                data: {
+                  product_id: product.id,
+                  specification_value_ids: specification_value_ids.join(','),
+                  quantity: current_combine?.quantity || 0,
+                  image: current_combine?.image,
+                  draw_image: current_combine?.draw_image,
+                  draw_image_back: current_combine?.draw_image_back,
+                  price: current_combine?.price
+                }
+              });
+            console.log(
+              'productSpecificationCombination',
+              productSpecificationCombination
+            );
+            return {
+              ...productSpecificationCombination,
+              specification_value_ids
+            };
+          })
+        );
+        console.log(
+          'productSpecificationCombinations',
+          productSpecificationCombinations
+        );
+        // 创建商品组合详情
+        const productSpecificationCombinationDetails = await Promise.all(
+          productSpecificationCombinations.map(async (item) => {
+            const product_specification_combination_details = await Promise.all(
+              item.specification_value_ids.map(
+                async (specification_value_id) => {
+                  return prisma.productSpecificationCombinationDetail.create({
+                    data: {
+                      combination_id: item.id,
+                      specification_value_id: specification_value_id
+                    }
+                  });
+                }
+              )
+            );
+            return {
+              ...item,
+              product_specification_combination_details
+            };
+          })
+        );
+        console.log(
+          'productSpecificationCombinationDetails',
+          productSpecificationCombinationDetails
+        );
+        const r = {
+          ...product,
+          product_images: images,
+          product_sell_long_images: sell_long_images,
+          product_specifications: specifications,
+          product_specification_combinations: productSpecificationCombinations
+        };
+        // 记录日志
+        // this.log.system_operate({
+        //   success: true,
+        //   operate_type: OperateType.CREATE,
+        //   operate_object_type: OperateObjectType.PRODUCT,
+        //   operate_object_id: r.id,
+        //   operate_content: '',
+        //   operate_result: JSON.stringify(r)
+        // });
+        return r;
+      },
+      {
+        maxWait: 50000, // default: 2000
+        timeout: 50000 // default: 5000
+        // isolationLevel: Prisma.TransactionIsolationLevel.Serializable // optional, default defined by database configuration
+      }
+    );
   }
 
   // 查询商品列表
@@ -820,169 +829,179 @@ export class ProductService {
       // product_specification_values: _product_specification_values = [],
     } = data;
     // 使用事务 交互式创建商品
-    return this.prisma.$transaction(async (prisma) => {
-      // 删除历史规格
-      await prisma.productSpecification.updateMany({
-        data: {
-          deleted_at: new Date()
-        },
-        where: {
-          product_id: product_id
-        }
-      });
-      // 创建商品的规格 batch create
-      const specifications = await Promise.all(
-        product_specifications.map(async (item) => {
-          // 创建商品规格
-          const productSpecification = await prisma.productSpecification.create(
-            {
-              data: {
-                product_id: product_id,
-                name: item.name
-              }
-            }
-          );
-          console.log('productSpecification', productSpecification);
-          // 创建商品规格值
-          const product_specification_values = await Promise.all(
-            item.product_specification_values.map(async (value) => {
-              return prisma.productSpecificationValue.create({
-                data: {
-                  specification_id: productSpecification.id,
-                  value: value.value
-                }
-              });
-            })
-          );
-          console.log(
-            'product_specification_values',
-            product_specification_values
-          );
-          return {
-            ...productSpecification,
-            product_specification_values: product_specification_values
-          };
-        })
-      );
-      console.log('specifications', specifications);
-      // 创建商品规格组合
-      const _combineSpecifications = combineSpecifications(specifications);
-      console.log('_combineSpecifications', _combineSpecifications);
-      // 查询已存在的组合(不需要了，这种时候，其实已经是删除重建了，因为多了一堆新组合)
-      const historyProductSpecificationCombinations =
-        await prisma.productSpecificationCombination.findMany({
+    return this.prisma.$transaction(
+      async (prisma) => {
+        // 删除历史规格
+        await prisma.productSpecification.updateMany({
+          data: {
+            deleted_at: new Date()
+          },
           where: {
-            product_id: product_id,
-            deleted_at: null
+            product_id: product_id
           }
         });
-      // 删除历史组合
-      await prisma.productSpecificationCombination.updateMany({
-        data: {
-          deleted_at: new Date()
-        },
-        where: {
-          product_id: product_id
-        }
-      });
-      // 删除历史组合详情
-      await prisma.productSpecificationCombinationDetail.updateMany({
-        data: {
-          deleted_at: new Date()
-        },
-        where: {
-          combination_id: {
-            in: historyProductSpecificationCombinations.map((value) => value.id)
-          }
-        }
-      });
-      let productSpecificationCombinations = await Promise.all(
-        _combineSpecifications.map(async (item) => {
-          const specification_value_ids = item.map(
-            (value) => value.specification_value_id
-          );
-          const specification_value_values = item.map((value) => value.value);
-          // 查找历史是否存在(不需要了，这种时候，其实已经是删除重建了，因为多了一堆新组合)
-          // const _history = historyProductSpecificationCombinations.find(
-          //   (value) => {
-          //     return (
-          //       value.specification_value_ids ===
-          //       specification_value_ids.join(',')
-          //     );
-          //   }
-          // );
-          // if (_history) {
-          //   return null;
-          // }
-          // 查找当前组合是否已经存在外部的设定内，用来获取用户设定的数量
-          const current_combine = product_specification_combinations.find(
-            (value) =>
-              value.specification_values.sort().join(',') ===
-              specification_value_values.sort().join(',')
-          );
-          const productSpecificationCombination =
-            await prisma.productSpecificationCombination.create({
-              data: {
-                product_id: product_id,
-                specification_value_ids: specification_value_ids.join(','),
-                quantity: current_combine?.quantity || 0,
-                image: current_combine?.image,
-                draw_image: current_combine?.draw_image,
-                draw_image_back: current_combine?.draw_image_back,
-                price: current_combine?.price
-              }
-            });
-          return {
-            ...productSpecificationCombination,
-            specification_value_ids
-          };
-        })
-      );
-      // 过滤掉null
-      productSpecificationCombinations =
-        productSpecificationCombinations.filter((item) => item);
-      console.log(
-        'productSpecificationCombinations',
-        productSpecificationCombinations
-      );
-      // 创建商品组合详情
-      const productSpecificationCombinationDetails = await Promise.all(
-        productSpecificationCombinations.map(async (item) => {
-          const product_specification_combination_details = await Promise.all(
-            item.specification_value_ids.map(async (specification_value_id) => {
-              return prisma.productSpecificationCombinationDetail.create({
+        // 创建商品的规格 batch create
+        const specifications = await Promise.all(
+          product_specifications.map(async (item) => {
+            // 创建商品规格
+            const productSpecification =
+              await prisma.productSpecification.create({
                 data: {
-                  combination_id: item.id,
-                  specification_value_id: specification_value_id
+                  product_id: product_id,
+                  name: item.name
                 }
               });
-            })
-          );
-          return {
-            ...item,
-            product_specification_combination_details
-          };
-        })
-      );
-      console.log(
-        'productSpecificationCombinationDetails',
-        productSpecificationCombinationDetails
-      );
-      const r = {
-        product_specifications: specifications,
-        product_specification_combinations: productSpecificationCombinations
-      };
-      // 记录日志
-      this.log.system_operate({
-        success: true,
-        operate_type: OperateType.UPDATE,
-        operate_object_type: OperateObjectType.PRODUCT_SPECIFICATION,
-        operate_object_id: product_id,
-        operate_content: '',
-        operate_result: JSON.stringify(r)
-      });
-      return r;
-    });
+            console.log('productSpecification', productSpecification);
+            // 创建商品规格值
+            const product_specification_values = await Promise.all(
+              item.product_specification_values.map(async (value) => {
+                return prisma.productSpecificationValue.create({
+                  data: {
+                    specification_id: productSpecification.id,
+                    value: value.value
+                  }
+                });
+              })
+            );
+            console.log(
+              'product_specification_values',
+              product_specification_values
+            );
+            return {
+              ...productSpecification,
+              product_specification_values: product_specification_values
+            };
+          })
+        );
+        console.log('specifications', specifications);
+        // 创建商品规格组合
+        const _combineSpecifications = combineSpecifications(specifications);
+        console.log('_combineSpecifications', _combineSpecifications);
+        // 查询已存在的组合(不需要了，这种时候，其实已经是删除重建了，因为多了一堆新组合)
+        const historyProductSpecificationCombinations =
+          await prisma.productSpecificationCombination.findMany({
+            where: {
+              product_id: product_id,
+              deleted_at: null
+            }
+          });
+        // 删除历史组合
+        await prisma.productSpecificationCombination.updateMany({
+          data: {
+            deleted_at: new Date()
+          },
+          where: {
+            product_id: product_id
+          }
+        });
+        // 删除历史组合详情
+        await prisma.productSpecificationCombinationDetail.updateMany({
+          data: {
+            deleted_at: new Date()
+          },
+          where: {
+            combination_id: {
+              in: historyProductSpecificationCombinations.map(
+                (value) => value.id
+              )
+            }
+          }
+        });
+        let productSpecificationCombinations = await Promise.all(
+          _combineSpecifications.map(async (item) => {
+            const specification_value_ids = item.map(
+              (value) => value.specification_value_id
+            );
+            const specification_value_values = item.map((value) => value.value);
+            // 查找历史是否存在(不需要了，这种时候，其实已经是删除重建了，因为多了一堆新组合)
+            // const _history = historyProductSpecificationCombinations.find(
+            //   (value) => {
+            //     return (
+            //       value.specification_value_ids ===
+            //       specification_value_ids.join(',')
+            //     );
+            //   }
+            // );
+            // if (_history) {
+            //   return null;
+            // }
+            // 查找当前组合是否已经存在外部的设定内，用来获取用户设定的数量
+            const current_combine = product_specification_combinations.find(
+              (value) =>
+                value.specification_values.sort().join(',') ===
+                specification_value_values.sort().join(',')
+            );
+            const productSpecificationCombination =
+              await prisma.productSpecificationCombination.create({
+                data: {
+                  product_id: product_id,
+                  specification_value_ids: specification_value_ids.join(','),
+                  quantity: current_combine?.quantity || 0,
+                  image: current_combine?.image,
+                  draw_image: current_combine?.draw_image,
+                  draw_image_back: current_combine?.draw_image_back,
+                  price: current_combine?.price
+                }
+              });
+            return {
+              ...productSpecificationCombination,
+              specification_value_ids
+            };
+          })
+        );
+        // 过滤掉null
+        productSpecificationCombinations =
+          productSpecificationCombinations.filter((item) => item);
+        console.log(
+          'productSpecificationCombinations',
+          productSpecificationCombinations
+        );
+        // 创建商品组合详情
+        const productSpecificationCombinationDetails = await Promise.all(
+          productSpecificationCombinations.map(async (item) => {
+            const product_specification_combination_details = await Promise.all(
+              item.specification_value_ids.map(
+                async (specification_value_id) => {
+                  return prisma.productSpecificationCombinationDetail.create({
+                    data: {
+                      combination_id: item.id,
+                      specification_value_id: specification_value_id
+                    }
+                  });
+                }
+              )
+            );
+            return {
+              ...item,
+              product_specification_combination_details
+            };
+          })
+        );
+        console.log(
+          'productSpecificationCombinationDetails',
+          productSpecificationCombinationDetails
+        );
+        const r = {
+          product_specifications: specifications,
+          product_specification_combinations: productSpecificationCombinations
+        };
+        // 记录日志
+        // this.log.system_operate({
+        //   success: true,
+        //   operate_type: OperateType.UPDATE,
+        //   operate_object_type: OperateObjectType.PRODUCT_SPECIFICATION,
+        //   operate_object_id: product_id,
+        //   operate_content: '',
+        //   operate_result: JSON.stringify(r)
+        // });
+        return r;
+      },
+      {
+        maxWait: 50000, // default: 2000
+        timeout: 50000 // default: 5000
+        // isolationLevel: Prisma.TransactionIsolationLevel.Serializable // optional, default defined by database configuration
+      }
+    );
   }
 
   // 修改规格
