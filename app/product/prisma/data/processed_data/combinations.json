@@ -1,0 +1,3122 @@
+[
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 417,
+            "value": "S",
+            "new_data": {
+                "id": 417,
+                "value": "S",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:24.945Z",
+                "updated_at": "2024-08-25T17:43:24.945Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1978,
+                "value": "S",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22405,
+                        "combination_id": 11215,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22407,
+                        "combination_id": 11216,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22409,
+                        "combination_id": 11217,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22411,
+                        "combination_id": 11218,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 423,
+            "value": "#000000",
+            "new_data": {
+                "id": 423,
+                "value": "#000000",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.151Z",
+                "updated_at": "2024-08-25T17:43:26.151Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1984,
+                "value": "#000000",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22406,
+                        "combination_id": 11215,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22414,
+                        "combination_id": 11219,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22422,
+                        "combination_id": 11223,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22430,
+                        "combination_id": 11227,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22438,
+                        "combination_id": 11231,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22446,
+                        "combination_id": 11235,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 417,
+            "value": "S",
+            "new_data": {
+                "id": 417,
+                "value": "S",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:24.945Z",
+                "updated_at": "2024-08-25T17:43:24.945Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1978,
+                "value": "S",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22405,
+                        "combination_id": 11215,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22407,
+                        "combination_id": 11216,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22409,
+                        "combination_id": 11217,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22411,
+                        "combination_id": 11218,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 424,
+            "value": "#b7b7b7",
+            "new_data": {
+                "id": 424,
+                "value": "#b7b7b7",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.301Z",
+                "updated_at": "2024-08-25T17:43:26.301Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1985,
+                "value": "#b7b7b7",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22408,
+                        "combination_id": 11216,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22416,
+                        "combination_id": 11220,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22424,
+                        "combination_id": 11224,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22432,
+                        "combination_id": 11228,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22440,
+                        "combination_id": 11232,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22448,
+                        "combination_id": 11236,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 417,
+            "value": "S",
+            "new_data": {
+                "id": 417,
+                "value": "S",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:24.945Z",
+                "updated_at": "2024-08-25T17:43:24.945Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1978,
+                "value": "S",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22405,
+                        "combination_id": 11215,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22407,
+                        "combination_id": 11216,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22409,
+                        "combination_id": 11217,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22411,
+                        "combination_id": 11218,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 425,
+            "value": "#e6e2e2",
+            "new_data": {
+                "id": 425,
+                "value": "#e6e2e2",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.517Z",
+                "updated_at": "2024-08-25T17:43:26.517Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1986,
+                "value": "#e6e2e2",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22410,
+                        "combination_id": 11217,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22418,
+                        "combination_id": 11221,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22426,
+                        "combination_id": 11225,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22434,
+                        "combination_id": 11229,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22442,
+                        "combination_id": 11233,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22450,
+                        "combination_id": 11237,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 417,
+            "value": "S",
+            "new_data": {
+                "id": 417,
+                "value": "S",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:24.945Z",
+                "updated_at": "2024-08-25T17:43:24.945Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1978,
+                "value": "S",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22405,
+                        "combination_id": 11215,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22407,
+                        "combination_id": 11216,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22409,
+                        "combination_id": 11217,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22411,
+                        "combination_id": 11218,
+                        "specification_value_id": 1978,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 426,
+            "value": "#424242",
+            "new_data": {
+                "id": 426,
+                "value": "#424242",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.667Z",
+                "updated_at": "2024-08-25T17:43:26.667Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1987,
+                "value": "#424242",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22412,
+                        "combination_id": 11218,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22420,
+                        "combination_id": 11222,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22428,
+                        "combination_id": 11226,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22436,
+                        "combination_id": 11230,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22444,
+                        "combination_id": 11234,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22452,
+                        "combination_id": 11238,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 418,
+            "value": "M",
+            "new_data": {
+                "id": 418,
+                "value": "M",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.095Z",
+                "updated_at": "2024-08-25T17:43:25.095Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1979,
+                "value": "M",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22413,
+                        "combination_id": 11219,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22415,
+                        "combination_id": 11220,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22417,
+                        "combination_id": 11221,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22419,
+                        "combination_id": 11222,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 423,
+            "value": "#000000",
+            "new_data": {
+                "id": 423,
+                "value": "#000000",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.151Z",
+                "updated_at": "2024-08-25T17:43:26.151Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1984,
+                "value": "#000000",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22406,
+                        "combination_id": 11215,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22414,
+                        "combination_id": 11219,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22422,
+                        "combination_id": 11223,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22430,
+                        "combination_id": 11227,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22438,
+                        "combination_id": 11231,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22446,
+                        "combination_id": 11235,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 418,
+            "value": "M",
+            "new_data": {
+                "id": 418,
+                "value": "M",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.095Z",
+                "updated_at": "2024-08-25T17:43:25.095Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1979,
+                "value": "M",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22413,
+                        "combination_id": 11219,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22415,
+                        "combination_id": 11220,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22417,
+                        "combination_id": 11221,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22419,
+                        "combination_id": 11222,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 424,
+            "value": "#b7b7b7",
+            "new_data": {
+                "id": 424,
+                "value": "#b7b7b7",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.301Z",
+                "updated_at": "2024-08-25T17:43:26.301Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1985,
+                "value": "#b7b7b7",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22408,
+                        "combination_id": 11216,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22416,
+                        "combination_id": 11220,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22424,
+                        "combination_id": 11224,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22432,
+                        "combination_id": 11228,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22440,
+                        "combination_id": 11232,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22448,
+                        "combination_id": 11236,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 418,
+            "value": "M",
+            "new_data": {
+                "id": 418,
+                "value": "M",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.095Z",
+                "updated_at": "2024-08-25T17:43:25.095Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1979,
+                "value": "M",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22413,
+                        "combination_id": 11219,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22415,
+                        "combination_id": 11220,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22417,
+                        "combination_id": 11221,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22419,
+                        "combination_id": 11222,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 425,
+            "value": "#e6e2e2",
+            "new_data": {
+                "id": 425,
+                "value": "#e6e2e2",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.517Z",
+                "updated_at": "2024-08-25T17:43:26.517Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1986,
+                "value": "#e6e2e2",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22410,
+                        "combination_id": 11217,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22418,
+                        "combination_id": 11221,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22426,
+                        "combination_id": 11225,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22434,
+                        "combination_id": 11229,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22442,
+                        "combination_id": 11233,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22450,
+                        "combination_id": 11237,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 418,
+            "value": "M",
+            "new_data": {
+                "id": 418,
+                "value": "M",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.095Z",
+                "updated_at": "2024-08-25T17:43:25.095Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1979,
+                "value": "M",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22413,
+                        "combination_id": 11219,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22415,
+                        "combination_id": 11220,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22417,
+                        "combination_id": 11221,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22419,
+                        "combination_id": 11222,
+                        "specification_value_id": 1979,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 426,
+            "value": "#424242",
+            "new_data": {
+                "id": 426,
+                "value": "#424242",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.667Z",
+                "updated_at": "2024-08-25T17:43:26.667Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1987,
+                "value": "#424242",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22412,
+                        "combination_id": 11218,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22420,
+                        "combination_id": 11222,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22428,
+                        "combination_id": 11226,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22436,
+                        "combination_id": 11230,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22444,
+                        "combination_id": 11234,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22452,
+                        "combination_id": 11238,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 419,
+            "value": "L",
+            "new_data": {
+                "id": 419,
+                "value": "L",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.253Z",
+                "updated_at": "2024-08-25T17:43:25.253Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1980,
+                "value": "L",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22421,
+                        "combination_id": 11223,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22423,
+                        "combination_id": 11224,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22425,
+                        "combination_id": 11225,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22427,
+                        "combination_id": 11226,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 423,
+            "value": "#000000",
+            "new_data": {
+                "id": 423,
+                "value": "#000000",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.151Z",
+                "updated_at": "2024-08-25T17:43:26.151Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1984,
+                "value": "#000000",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22406,
+                        "combination_id": 11215,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22414,
+                        "combination_id": 11219,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22422,
+                        "combination_id": 11223,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22430,
+                        "combination_id": 11227,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22438,
+                        "combination_id": 11231,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22446,
+                        "combination_id": 11235,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 419,
+            "value": "L",
+            "new_data": {
+                "id": 419,
+                "value": "L",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.253Z",
+                "updated_at": "2024-08-25T17:43:25.253Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1980,
+                "value": "L",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22421,
+                        "combination_id": 11223,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22423,
+                        "combination_id": 11224,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22425,
+                        "combination_id": 11225,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22427,
+                        "combination_id": 11226,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 424,
+            "value": "#b7b7b7",
+            "new_data": {
+                "id": 424,
+                "value": "#b7b7b7",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.301Z",
+                "updated_at": "2024-08-25T17:43:26.301Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1985,
+                "value": "#b7b7b7",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22408,
+                        "combination_id": 11216,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22416,
+                        "combination_id": 11220,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22424,
+                        "combination_id": 11224,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22432,
+                        "combination_id": 11228,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22440,
+                        "combination_id": 11232,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22448,
+                        "combination_id": 11236,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 419,
+            "value": "L",
+            "new_data": {
+                "id": 419,
+                "value": "L",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.253Z",
+                "updated_at": "2024-08-25T17:43:25.253Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1980,
+                "value": "L",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22421,
+                        "combination_id": 11223,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22423,
+                        "combination_id": 11224,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22425,
+                        "combination_id": 11225,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22427,
+                        "combination_id": 11226,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 425,
+            "value": "#e6e2e2",
+            "new_data": {
+                "id": 425,
+                "value": "#e6e2e2",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.517Z",
+                "updated_at": "2024-08-25T17:43:26.517Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1986,
+                "value": "#e6e2e2",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22410,
+                        "combination_id": 11217,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22418,
+                        "combination_id": 11221,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22426,
+                        "combination_id": 11225,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22434,
+                        "combination_id": 11229,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22442,
+                        "combination_id": 11233,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22450,
+                        "combination_id": 11237,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 419,
+            "value": "L",
+            "new_data": {
+                "id": 419,
+                "value": "L",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.253Z",
+                "updated_at": "2024-08-25T17:43:25.253Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1980,
+                "value": "L",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22421,
+                        "combination_id": 11223,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22423,
+                        "combination_id": 11224,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22425,
+                        "combination_id": 11225,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22427,
+                        "combination_id": 11226,
+                        "specification_value_id": 1980,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 426,
+            "value": "#424242",
+            "new_data": {
+                "id": 426,
+                "value": "#424242",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.667Z",
+                "updated_at": "2024-08-25T17:43:26.667Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1987,
+                "value": "#424242",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22412,
+                        "combination_id": 11218,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22420,
+                        "combination_id": 11222,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22428,
+                        "combination_id": 11226,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22436,
+                        "combination_id": 11230,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22444,
+                        "combination_id": 11234,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22452,
+                        "combination_id": 11238,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 420,
+            "value": "XL",
+            "new_data": {
+                "id": 420,
+                "value": "XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.469Z",
+                "updated_at": "2024-08-25T17:43:25.469Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1981,
+                "value": "XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22429,
+                        "combination_id": 11227,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22431,
+                        "combination_id": 11228,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22433,
+                        "combination_id": 11229,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22435,
+                        "combination_id": 11230,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 423,
+            "value": "#000000",
+            "new_data": {
+                "id": 423,
+                "value": "#000000",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.151Z",
+                "updated_at": "2024-08-25T17:43:26.151Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1984,
+                "value": "#000000",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22406,
+                        "combination_id": 11215,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22414,
+                        "combination_id": 11219,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22422,
+                        "combination_id": 11223,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22430,
+                        "combination_id": 11227,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22438,
+                        "combination_id": 11231,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22446,
+                        "combination_id": 11235,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 420,
+            "value": "XL",
+            "new_data": {
+                "id": 420,
+                "value": "XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.469Z",
+                "updated_at": "2024-08-25T17:43:25.469Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1981,
+                "value": "XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22429,
+                        "combination_id": 11227,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22431,
+                        "combination_id": 11228,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22433,
+                        "combination_id": 11229,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22435,
+                        "combination_id": 11230,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 424,
+            "value": "#b7b7b7",
+            "new_data": {
+                "id": 424,
+                "value": "#b7b7b7",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.301Z",
+                "updated_at": "2024-08-25T17:43:26.301Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1985,
+                "value": "#b7b7b7",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22408,
+                        "combination_id": 11216,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22416,
+                        "combination_id": 11220,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22424,
+                        "combination_id": 11224,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22432,
+                        "combination_id": 11228,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22440,
+                        "combination_id": 11232,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22448,
+                        "combination_id": 11236,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 420,
+            "value": "XL",
+            "new_data": {
+                "id": 420,
+                "value": "XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.469Z",
+                "updated_at": "2024-08-25T17:43:25.469Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1981,
+                "value": "XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22429,
+                        "combination_id": 11227,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22431,
+                        "combination_id": 11228,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22433,
+                        "combination_id": 11229,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22435,
+                        "combination_id": 11230,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 425,
+            "value": "#e6e2e2",
+            "new_data": {
+                "id": 425,
+                "value": "#e6e2e2",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.517Z",
+                "updated_at": "2024-08-25T17:43:26.517Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1986,
+                "value": "#e6e2e2",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22410,
+                        "combination_id": 11217,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22418,
+                        "combination_id": 11221,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22426,
+                        "combination_id": 11225,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22434,
+                        "combination_id": 11229,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22442,
+                        "combination_id": 11233,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22450,
+                        "combination_id": 11237,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 420,
+            "value": "XL",
+            "new_data": {
+                "id": 420,
+                "value": "XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.469Z",
+                "updated_at": "2024-08-25T17:43:25.469Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1981,
+                "value": "XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22429,
+                        "combination_id": 11227,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22431,
+                        "combination_id": 11228,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22433,
+                        "combination_id": 11229,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22435,
+                        "combination_id": 11230,
+                        "specification_value_id": 1981,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 426,
+            "value": "#424242",
+            "new_data": {
+                "id": 426,
+                "value": "#424242",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.667Z",
+                "updated_at": "2024-08-25T17:43:26.667Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1987,
+                "value": "#424242",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22412,
+                        "combination_id": 11218,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22420,
+                        "combination_id": 11222,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22428,
+                        "combination_id": 11226,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22436,
+                        "combination_id": 11230,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22444,
+                        "combination_id": 11234,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22452,
+                        "combination_id": 11238,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 421,
+            "value": "2XL",
+            "new_data": {
+                "id": 421,
+                "value": "2XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.619Z",
+                "updated_at": "2024-08-25T17:43:25.619Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1982,
+                "value": "2XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22437,
+                        "combination_id": 11231,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22439,
+                        "combination_id": 11232,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22441,
+                        "combination_id": 11233,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22443,
+                        "combination_id": 11234,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 423,
+            "value": "#000000",
+            "new_data": {
+                "id": 423,
+                "value": "#000000",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.151Z",
+                "updated_at": "2024-08-25T17:43:26.151Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1984,
+                "value": "#000000",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22406,
+                        "combination_id": 11215,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22414,
+                        "combination_id": 11219,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22422,
+                        "combination_id": 11223,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22430,
+                        "combination_id": 11227,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22438,
+                        "combination_id": 11231,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22446,
+                        "combination_id": 11235,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 421,
+            "value": "2XL",
+            "new_data": {
+                "id": 421,
+                "value": "2XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.619Z",
+                "updated_at": "2024-08-25T17:43:25.619Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1982,
+                "value": "2XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22437,
+                        "combination_id": 11231,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22439,
+                        "combination_id": 11232,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22441,
+                        "combination_id": 11233,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22443,
+                        "combination_id": 11234,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 424,
+            "value": "#b7b7b7",
+            "new_data": {
+                "id": 424,
+                "value": "#b7b7b7",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.301Z",
+                "updated_at": "2024-08-25T17:43:26.301Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1985,
+                "value": "#b7b7b7",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22408,
+                        "combination_id": 11216,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22416,
+                        "combination_id": 11220,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22424,
+                        "combination_id": 11224,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22432,
+                        "combination_id": 11228,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22440,
+                        "combination_id": 11232,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22448,
+                        "combination_id": 11236,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 421,
+            "value": "2XL",
+            "new_data": {
+                "id": 421,
+                "value": "2XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.619Z",
+                "updated_at": "2024-08-25T17:43:25.619Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1982,
+                "value": "2XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22437,
+                        "combination_id": 11231,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22439,
+                        "combination_id": 11232,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22441,
+                        "combination_id": 11233,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22443,
+                        "combination_id": 11234,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 425,
+            "value": "#e6e2e2",
+            "new_data": {
+                "id": 425,
+                "value": "#e6e2e2",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.517Z",
+                "updated_at": "2024-08-25T17:43:26.517Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1986,
+                "value": "#e6e2e2",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22410,
+                        "combination_id": 11217,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22418,
+                        "combination_id": 11221,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22426,
+                        "combination_id": 11225,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22434,
+                        "combination_id": 11229,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22442,
+                        "combination_id": 11233,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22450,
+                        "combination_id": 11237,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 421,
+            "value": "2XL",
+            "new_data": {
+                "id": 421,
+                "value": "2XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.619Z",
+                "updated_at": "2024-08-25T17:43:25.619Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1982,
+                "value": "2XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22437,
+                        "combination_id": 11231,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22439,
+                        "combination_id": 11232,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22441,
+                        "combination_id": 11233,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22443,
+                        "combination_id": 11234,
+                        "specification_value_id": 1982,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 426,
+            "value": "#424242",
+            "new_data": {
+                "id": 426,
+                "value": "#424242",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.667Z",
+                "updated_at": "2024-08-25T17:43:26.667Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1987,
+                "value": "#424242",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22412,
+                        "combination_id": 11218,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22420,
+                        "combination_id": 11222,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22428,
+                        "combination_id": 11226,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22436,
+                        "combination_id": 11230,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22444,
+                        "combination_id": 11234,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22452,
+                        "combination_id": 11238,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 422,
+            "value": "3XL",
+            "new_data": {
+                "id": 422,
+                "value": "3XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.769Z",
+                "updated_at": "2024-08-25T17:43:25.769Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1983,
+                "value": "3XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22445,
+                        "combination_id": 11235,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22447,
+                        "combination_id": 11236,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22449,
+                        "combination_id": 11237,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22451,
+                        "combination_id": 11238,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 423,
+            "value": "#000000",
+            "new_data": {
+                "id": 423,
+                "value": "#000000",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.151Z",
+                "updated_at": "2024-08-25T17:43:26.151Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1984,
+                "value": "#000000",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22406,
+                        "combination_id": 11215,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22414,
+                        "combination_id": 11219,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22422,
+                        "combination_id": 11223,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22430,
+                        "combination_id": 11227,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22438,
+                        "combination_id": 11231,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22446,
+                        "combination_id": 11235,
+                        "specification_value_id": 1984,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 422,
+            "value": "3XL",
+            "new_data": {
+                "id": 422,
+                "value": "3XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.769Z",
+                "updated_at": "2024-08-25T17:43:25.769Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1983,
+                "value": "3XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22445,
+                        "combination_id": 11235,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22447,
+                        "combination_id": 11236,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22449,
+                        "combination_id": 11237,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22451,
+                        "combination_id": 11238,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 424,
+            "value": "#b7b7b7",
+            "new_data": {
+                "id": 424,
+                "value": "#b7b7b7",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.301Z",
+                "updated_at": "2024-08-25T17:43:26.301Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1985,
+                "value": "#b7b7b7",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22408,
+                        "combination_id": 11216,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22416,
+                        "combination_id": 11220,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22424,
+                        "combination_id": 11224,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22432,
+                        "combination_id": 11228,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22440,
+                        "combination_id": 11232,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22448,
+                        "combination_id": 11236,
+                        "specification_value_id": 1985,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 422,
+            "value": "3XL",
+            "new_data": {
+                "id": 422,
+                "value": "3XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.769Z",
+                "updated_at": "2024-08-25T17:43:25.769Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1983,
+                "value": "3XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22445,
+                        "combination_id": 11235,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22447,
+                        "combination_id": 11236,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22449,
+                        "combination_id": 11237,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22451,
+                        "combination_id": 11238,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 425,
+            "value": "#e6e2e2",
+            "new_data": {
+                "id": 425,
+                "value": "#e6e2e2",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.517Z",
+                "updated_at": "2024-08-25T17:43:26.517Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1986,
+                "value": "#e6e2e2",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22410,
+                        "combination_id": 11217,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22418,
+                        "combination_id": 11221,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22426,
+                        "combination_id": 11225,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22434,
+                        "combination_id": 11229,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22442,
+                        "combination_id": 11233,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22450,
+                        "combination_id": 11237,
+                        "specification_value_id": 1986,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ],
+    [
+        {
+            "specification_id": 162,
+            "name": "尺码",
+            "specification_value_id": 422,
+            "value": "3XL",
+            "new_data": {
+                "id": 422,
+                "value": "3XL",
+                "specification_id": 42,
+                "created_at": "2024-08-25T17:43:25.769Z",
+                "updated_at": "2024-08-25T17:43:25.769Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1983,
+                "value": "3XL",
+                "specification_id": 162,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22445,
+                        "combination_id": 11235,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22447,
+                        "combination_id": 11236,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22449,
+                        "combination_id": 11237,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22451,
+                        "combination_id": 11238,
+                        "specification_value_id": 1983,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        },
+        {
+            "specification_id": 163,
+            "name": "颜色",
+            "specification_value_id": 426,
+            "value": "#424242",
+            "new_data": {
+                "id": 426,
+                "value": "#424242",
+                "specification_id": 43,
+                "created_at": "2024-08-25T17:43:26.667Z",
+                "updated_at": "2024-08-25T17:43:26.667Z",
+                "deleted_at": null
+            },
+            "old_data": {
+                "id": 1987,
+                "value": "#424242",
+                "specification_id": 163,
+                "created_at": "2024-08-25 16:53:54.845",
+                "updated_at": "2024-08-25 16:53:54.845",
+                "deleted_at": null,
+                "product_specification_combinations_detail": [
+                    {
+                        "id": 22412,
+                        "combination_id": 11218,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22420,
+                        "combination_id": 11222,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22428,
+                        "combination_id": 11226,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22436,
+                        "combination_id": 11230,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22444,
+                        "combination_id": 11234,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    },
+                    {
+                        "id": 22452,
+                        "combination_id": 11238,
+                        "specification_value_id": 1987,
+                        "created_at": "2024-08-25 16:53:54.845",
+                        "updated_at": "2024-08-25 16:53:54.845",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        }
+    ]
+]

@@ -280,10 +280,15 @@ export class ProductService {
           }
         }
       },
-      orderBy: {
-        // created_at: 'desc'
-        sort: 'asc'
-      },
+      orderBy: [
+        {
+          // created_at: 'desc'
+          sort: 'asc'
+        },
+        {
+          id: 'asc'
+        }
+      ],
       skip: skip,
       take: take
     });
@@ -291,7 +296,7 @@ export class ProductService {
 
   // 数量查询
   async count(query: QueryProductDto) {
-    const { name, status, is_virtual_goods = [0, 1] } = query;
+    const { name, status, category_id, is_virtual_goods = [0, 1] } = query;
     return this.prisma.product.count({
       where: {
         deleted_at: null,
@@ -299,6 +304,7 @@ export class ProductService {
           contains: name
         },
         ...(status ? { status } : {}),
+        ...(category_id ? { category_id } : {}),
         product_category: {
           is_virtual_goods: {
             in: is_virtual_goods

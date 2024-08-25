@@ -132,7 +132,9 @@ export class AuthService {
             openid: openid,
             session_key: session_key,
             nickname: '新用户',
-            avatar: ''
+            avatar: '',
+            // 默认创建用户的时候赠送100金币
+            gold: 100
           }
         });
       } else {

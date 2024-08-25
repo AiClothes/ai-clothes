@@ -27,6 +27,8 @@ model MiniProgramConfig {
   content    String?
   // 小程序公告 图片
   image      String?
+  // 是否显示公告
+  is_show    Boolean   @default(false)
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
   deleted_at DateTime?

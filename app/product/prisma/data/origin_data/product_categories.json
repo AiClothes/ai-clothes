@@ -1,0 +1,53 @@
+{
+"product_categories": [
+	{
+		"id" : 1,
+		"name" : "短袖",
+		"sort" : 0,
+		"parent_id" : null,
+		"created_at" : "2024-08-20 17:00:40.248",
+		"updated_at" : "2024-08-20 17:01:00.673",
+		"deleted_at" : null,
+		"is_virtual_goods" : 0
+	},
+	{
+		"id" : 2,
+		"name" : "长袖",
+		"sort" : 0,
+		"parent_id" : null,
+		"created_at" : "2024-08-20 17:00:51.161",
+		"updated_at" : "2024-08-20 17:00:51.161",
+		"deleted_at" : null,
+		"is_virtual_goods" : 0
+	},
+	{
+		"id" : 3,
+		"name" : "外套",
+		"sort" : 0,
+		"parent_id" : null,
+		"created_at" : "2024-08-20 17:00:55.842",
+		"updated_at" : "2024-08-20 17:00:55.842",
+		"deleted_at" : null,
+		"is_virtual_goods" : 0
+	},
+	{
+		"id" : 4,
+		"name" : "金币",
+		"sort" : 0,
+		"parent_id" : null,
+		"created_at" : "2024-08-21 23:00:24.335",
+		"updated_at" : "2024-08-21 23:00:24.335",
+		"deleted_at" : null,
+		"is_virtual_goods" : 1
+	},
+	{
+		"id" : 5,
+		"name" : "运动服",
+		"sort" : 0,
+		"parent_id" : null,
+		"created_at" : "2024-08-25 16:45:53.729",
+		"updated_at" : "2024-08-25 16:45:53.729",
+		"deleted_at" : null,
+		"is_virtual_goods" : 0
+	}
+]}

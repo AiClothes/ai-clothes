@@ -152,7 +152,7 @@ export class OrderService {
           console.log('_price', _price);
 
           // 如果是金币，则给用户加金币
-          if (product_id === 3) {
+          if (product_id === 1) {
             console.log('确实是金币更新', _price * item.product_num);
             // 给用户添加金币
             const uug: any = this.userClient.send('update_user_gold', {

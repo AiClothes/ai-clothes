@@ -6,7 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "prisma": {
-    "schema": "./prisma/schema.prisma"
+    "schema": "./prisma/schema.prisma",
+    "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
     "build": "nest build",
@@ -22,6 +23,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
