@@ -66,7 +66,7 @@ export class UserWorkService {
     }
     if (
       create_type === WorkCreateType.CREATE_BY_TEXT &&
-      source === WorkType.BUILD_PRODUCT
+      source === WorkType.BUILD
     ) {
       desc = 10;
     }
