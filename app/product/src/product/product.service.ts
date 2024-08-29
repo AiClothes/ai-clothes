@@ -349,7 +349,8 @@ export class ProductService {
         price: true,
         image: true,
         sort: true,
-        pay_account: true
+        pay_account: true,
+        pay_account2: true
       },
       orderBy: {
         // created_at: 'desc'
@@ -460,7 +461,8 @@ export class ProductService {
       category_id,
       price,
       sort,
-      pay_account
+      pay_account,
+      pay_account2
     } = data;
     const old = await this.findOne(data.id);
     const r = await this.prisma.product.update({
@@ -475,7 +477,8 @@ export class ProductService {
         ...(category_id ? { category_id } : {}),
         ...(price || price === 0 ? { price } : {}),
         ...(sort || sort === 0 ? { sort } : {}),
-        ...(pay_account || pay_account === 0 ? { pay_account } : {})
+        ...(pay_account || pay_account === 0 ? { pay_account } : {}),
+        ...(pay_account2 ? { pay_account2 } : {})
       }
     });
     this.log.system_operate({
