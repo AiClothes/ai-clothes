@@ -423,38 +423,50 @@ export class OrderService {
 
   // 按日期查询订单数量[范围内的每日订单量]
   async countByDateRange(startDate: string, endDate: string) {
-    const sql = Prisma.sql`
-      SELECT 
-        DATE(created_at) as date, 
-        COUNT(*) as order_count 
-      FROM 
-        orders 
-      WHERE 
-        created_at BETWEEN ${new Date(startDate)} AND ${new Date(endDate)} 
-        AND deleted_at IS NULL 
-      GROUP BY 
-        DATE(created_at)
-      ORDER BY 
-        DATE(created_at) ASC
-    `;
-    const result: any[] = await this.prisma.$queryRaw(sql);
+    const parsedStartDate = new Date(startDate);
+    const parsedEndDate = new Date(endDate);
 
-    // 生成日期范围内的所有日期
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const dateRange = [];
-    for (let d = start; d <= end; d.setDate(d.getDate() + 1)) {
-      dateRange.push(new Date(d).toISOString().split('T')[0]);
+    // 检查日期格式有效性
+    if (isNaN(parsedStartDate.getTime()) || isNaN(parsedEndDate.getTime())) {
+      throw new Error('无效的日期格式');
     }
 
-    // 将查询结果与日期范围合并
-    const resultMap = new Map(
-      result.map((item) => [item.date, item.order_count])
-    );
-    const finalResult = dateRange.map((date) => ({
-      date,
-      order_count: resultMap.get(date) || 0
-    }));
+    // 拼接SQL查询
+    const sql = `
+        SELECT 
+            DATE(created_at) as date, 
+            COUNT(*) as order_count 
+        FROM 
+            orders 
+        WHERE 
+            created_at BETWEEN '${startDate}' AND '${endDate}' 
+            AND deleted_at IS NULL 
+        GROUP BY 
+            DATE(created_at)
+        ORDER BY 
+            DATE(created_at) ASC
+    `;
+    const result: { date: string; order_count: number }[] =
+      await this.prisma.$queryRawUnsafe(sql);
+
+    // 生成日期范围内的所有日期并合并查询结果
+    const resultsMap: Record<string, number> = {};
+    result.forEach(({ date, order_count }) => {
+      resultsMap[date] = order_count;
+    });
+
+    const finalResult: { date: string; order_count: number }[] = [];
+    for (
+      let d = parsedStartDate;
+      d <= parsedEndDate;
+      d.setDate(d.getDate() + 1)
+    ) {
+      const dateStr = d.toISOString().split('T')[0];
+      finalResult.push({
+        date: dateStr,
+        order_count: resultsMap[dateStr] || 0
+      });
+    }
 
     return finalResult;
   }
