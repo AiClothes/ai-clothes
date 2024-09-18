@@ -139,6 +139,18 @@ export class UserController {
     }
   }
 
+  @Post('find-front-all-count')
+  async findFrontAllCount() {
+    try {
+      return await this.userService.countFront({});
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
   @Post('update-front-user')
   async updateFrontUser(
     @Body() data: UpdateFrontUserDto,

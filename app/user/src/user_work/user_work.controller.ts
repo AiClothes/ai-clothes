@@ -156,4 +156,19 @@ export class UserWorkController {
       );
     }
   }
+
+  @Post('count-works-type')
+  async countWorksType(
+    @Body('user_id') user_id: number,
+    @Body('work_id') work_id: number
+  ) {
+    try {
+      return await this.userWorkService.countWorksType();
+    } catch (e) {
+      throw new HttpException(
+        { message: e.message, errors: e },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
 }

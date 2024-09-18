@@ -7,6 +7,11 @@ import { LogService } from '../log/log.service';
 import { MICROSERVICE, OperateObjectType, OperateType } from '@one-server/core';
 import { ClientProxy } from '@nestjs/microservices';
 import { QueryOrderDto } from './dto/query-order.dto';
+import { Prisma } from '@prisma/client';
+import WxPay from 'wechatpay-node-v3';
+import * as dayjs from 'dayjs';
+
+import { WECHAT_PAY_MANAGER } from 'nest-wechatpay-node-v3';
 
 @Injectable()
 export class OrderService {
@@ -14,7 +19,8 @@ export class OrderService {
     private prisma: PrismaService,
     private log: LogService,
     @Inject(MICROSERVICE.PRODUCT_SERVICE) private productClient: ClientProxy,
-    @Inject(MICROSERVICE.USER_SERVICE) private userClient: ClientProxy
+    @Inject(MICROSERVICE.USER_SERVICE) private userClient: ClientProxy,
+    @Inject(WECHAT_PAY_MANAGER) private wxPay: WxPay
   ) {}
 
   async create(data: CreateOrderDto) {
@@ -407,5 +413,142 @@ export class OrderService {
       operate_result: JSON.stringify(r)
     });
     return r;
+  }
+
+  // 计算总销售额
+  async totalSales() {
+    return this.prisma
+      .$queryRaw`SELECT SUM(product_total_price) as total_sales FROM \`order_products\` WHERE deleted_at IS NULL`;
+  }
+
+  // 按日期查询订单数量[范围内的每日订单量]
+  async countByDateRange(startDate: string, endDate: string) {
+    const sql = Prisma.sql`
+      SELECT 
+        DATE(created_at) as date, 
+        COUNT(*) as order_count 
+      FROM 
+        orders 
+      WHERE 
+        created_at BETWEEN ${new Date(startDate)} AND ${new Date(endDate)} 
+        AND deleted_at IS NULL 
+      GROUP BY 
+        DATE(created_at)
+      ORDER BY 
+        DATE(created_at) ASC
+    `;
+    const result: any[] = await this.prisma.$queryRaw(sql);
+
+    // 生成日期范围内的所有日期
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const dateRange = [];
+    for (let d = start; d <= end; d.setDate(d.getDate() + 1)) {
+      dateRange.push(new Date(d).toISOString().split('T')[0]);
+    }
+
+    // 将查询结果与日期范围合并
+    const resultMap = new Map(
+      result.map((item) => [item.date, item.order_count])
+    );
+    const finalResult = dateRange.map((date) => ({
+      date,
+      order_count: resultMap.get(date) || 0
+    }));
+
+    return finalResult;
+  }
+
+  // 创建微信订单
+  async createWxOrder(data: any) {
+    const {
+      // 用户id
+      userId,
+      // 支付者
+      openid,
+      // 订单号
+      orderNumber,
+      // product_id
+      productId,
+      // 总费用
+      // totalFee,
+      // 金币描述
+      description,
+      // 1-6
+      specification_combination_id,
+      self
+    } = data;
+
+    // 读取specification_combination_id
+
+    const totalFee =
+      specification_combination_id === 6
+        ? Number(self)
+        : specification_combination_id * 100;
+
+    console.log('createWxOrder', totalFee, data);
+    // // 订单号
+    // // 获取当前时间戳
+    // const timestamp = dayjs().format('YYYYMMDDHHmmss');
+    // // 生成一个 100000 到 999999 的随机数
+    // const randomNumber =
+    //   Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+    // // 组合成订单号
+    // const orderNumber = `${timestamp}${randomNumber}`;
+    try {
+      const nonce_str = Math.random().toString(36).substr(2, 15); // 随机字符串
+      const timestamp = parseInt(+new Date() / 1000 + '').toString(); // 时间戳 秒
+      const url = '/v3/pay/transactions/jsapi';
+
+      const params = {
+        notify_url: 'https://api.chishenai.cn/api-order/order/wxpay_callback',
+        description: `金币充值-小程序支付-${description}`,
+        out_trade_no: orderNumber,
+        amount: {
+          // 实际金额是分，所以要乘以100
+          total: totalFee * 100,
+          currency: 'CNY'
+        },
+        payer: {
+          openid
+        }
+      };
+
+      console.log('params', params);
+
+      // // 生成小程序支付需要的字段
+      // const signature = this.wxPay.getSignature(
+      //   'POST',
+      //   nonce_str,
+      //   timestamp,
+      //   url,
+      //   params
+      // );
+      // // 获取头部authorization 参数
+      // const authorization = this.wxPay.getAuthorization(
+      //   nonce_str,
+      //   timestamp,
+      //   signature
+      // );
+
+      const result = await this.wxPay.transactions_jsapi(params);
+      const { data, status } = result || {};
+
+      console.log('result', result);
+      if (status !== 200) {
+        throw new Error(`订单创建失败！`);
+      }
+
+      const { paySign } = data;
+      if (!paySign) {
+        throw new Error(`订单创建失败！`);
+      }
+
+      return {
+        ...data
+      };
+    } catch (error) {
+      throw new Error(`创建订单失败: ${error.message}`);
+    }
   }
 }

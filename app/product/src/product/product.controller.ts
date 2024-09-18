@@ -55,6 +55,7 @@ export class ProductController {
   @Post('find-all')
   async findAll(@Body() query: QueryProductDto) {
     try {
+      console.log('query', query);
       const count = await this.productService.count(query);
       const list = await this.productService.findAll(query);
       return { count, list };

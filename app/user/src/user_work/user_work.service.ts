@@ -331,4 +331,57 @@ export class UserWorkService {
       }
     });
   }
+
+  // 统计用户创作了多少种作品
+  //   const WorkType = {
+  //     // 自己构建的作品 如AI绘图使用创建的
+  //     BUILD: 'BUILD',
+  //     // 上传自己的本地作品
+  //     UPLOAD: 'UPLOAD',
+  //     // 生成的产品（用商品生产的）
+  //     BUILD_PRODUCT: 'BUILD_PRODUCT'
+  // }
+  // const WorkTypeNames = {
+  //     BUILD: '自己构建的作品',
+  //     UPLOAD: '上传自己的本地作品',
+  //     BUILD_PRODUCT: '生成的产品'
+  // }
+  // const WorkCreateType = {
+  //     NONE: 'NONE',
+  //     // 图生图
+  //     CREATE_BY_IMAGE: 'CREATE_BY_IMAGE',
+  //     // 文生图
+  //     CREATE_BY_TEXT: 'CREATE_BY_TEXT',
+  //     // 抠图 这个是用其他作品抠出来的
+  //     PHOTOSHOP: 'PHOTOSHOP',
+  //     // 合成型的，如生产的商品
+  //     COMPOSITE: 'COMPOSITE'
+  // }
+  // const WorkCreateTypeNames = {
+  //     NONE: '无',
+  //     CREATE_BY_IMAGE: '图生图',
+  //     CREATE_BY_TEXT: '文生图',
+  //     PHOTOSHOP: '抠图',
+  //     COMPOSITE: '产品合成'
+  // }
+  async countWorksType() {
+    const result = await this.prisma.userWork.groupBy({
+      by: ['source'],
+      where: {},
+      _count: {
+        source: true
+      }
+    });
+
+    const workTypeNames = {
+      BUILD: '自己构建的作品',
+      UPLOAD: '上传自己的本地作品',
+      BUILD_PRODUCT: '生成的产品'
+    };
+
+    return result.map((item) => ({
+      name: workTypeNames[item.source] || item.source,
+      value: item._count.source
+    }));
+  }
 }

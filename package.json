@@ -41,10 +41,12 @@
     "dayjs": "^1.11.11",
     "dayjs-plugin-utc": "^0.1.2",
     "helmet": "^7.1.0",
+    "nest-wechatpay-node-v3": "^1.0.2",
     "qcloud-cos-sts": "^3.1.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "tencentcloud-sdk-nodejs-aiart": "^4.0.895"
+    "tencentcloud-sdk-nodejs-aiart": "^4.0.895",
+    "wechatpay-node-v3": "^2.2.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
